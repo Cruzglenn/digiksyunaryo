@@ -1,6 +1,6 @@
 # Digiksyunaryo
 
-![Digiksyunaryo Logo](/uploads/logo.png)
+![Digiksyunaryo Logo](/uploads/logo.webp)
 
 ## Tungkol sa Proyekto (About the Project)
 
