@@ -32,10 +32,8 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
   }>({ partOfSpeech: null });
   const searchRef = useRef<HTMLDivElement>(null);
   
-  // Use search history functionality
   const { recordSearch, getPopularSearches, getSampleSearches } = useSearchHistory();
   
-  // Add state for draggable mini-view
   const [miniViewPosition, setMiniViewPosition] = useState({ x: window.innerWidth - 320, y: window.innerHeight - 300 });
   const [isDragging, setIsDragging] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
@@ -43,17 +41,14 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
   const dragStartPos = useRef({ x: 0, y: 0 });
   const dragStartOffset = useRef({ x: 0, y: 0 });
   
-  // Load popular searches on component mount
   useEffect(() => {
     const popular = getPopularSearches(5);
     setPopularSearches(popular.length > 0 ? popular : getSampleSearches());
   }, []);
   
-  // Update query when initialQuery prop changes
   useEffect(() => {
     if (initialQuery && initialQuery !== query) {
       setQuery(initialQuery);
-      // If initialQuery is new, trigger search
       if (initialQuery) {
         const wordKey = initialQuery.toLowerCase();
         const matchingWord = Object.keys(detailedWordData).find(
@@ -64,11 +59,7 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
           setSelectedWord(matchingWord);
           setDialogOpen(viewMode === "popup");
           setPopoverOpen(viewMode === "mini");
-          
-          // Record this search in history
           recordSearch(matchingWord);
-          
-          // Update popular searches after successful search
           const updated = getPopularSearches(5);
           setPopularSearches(updated);
         }
@@ -89,7 +80,6 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
     };
   }, []);
 
-  // Get all available parts of speech from the dictionary for filters
   const partsOfSpeech = useMemo(() => {
     const allParts = new Set<string>();
     Object.values(detailedWordData).forEach(word => {
@@ -100,41 +90,32 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
     return Array.from(allParts).sort();
   }, [detailedWordData]);
 
-  // Initialize Fuse.js for fuzzy search with specific options
   const fuse = useMemo(() => new Fuse(dictionaryWords, {
     keys: ['word'],
-    threshold: 0.4, // A lower threshold means a more strict match (0 requires an exact match)
-    distance: 100, // How far to search for matching patterns
-    includeScore: true, // Include score in result to determine match quality
-    useExtendedSearch: true, // Enable extended search features
-    ignoreLocation: true, // Ignore location bias
-    findAllMatches: true, // Find all matches in the string rather than stopping at the first match
+    threshold: 0.4, 
+    distance: 100, 
+    includeScore: true, 
+    useExtendedSearch: true, 
+    ignoreLocation: true, 
+    findAllMatches: true, 
   }), [dictionaryWords]);
 
   useEffect(() => {
     if (query.length > 0) {
-      // First, find words that start with the query (case insensitive)
       const startsWithQuery = dictionaryWords.filter(word => 
         word.word.toLowerCase().startsWith(query.toLowerCase())
       );
       
-      // Then use fuzzy search for more forgiving search results
       const results = fuse.search(query);
-      // Map results to get the original items and sort by score (lower is better)
       let fuzzyResults = results
         .sort((a, b) => (a.score || 1) - (b.score || 1))
         .map(result => result.item)
-        // Filter out words that already appear in startsWithQuery
         .filter(item => !startsWithQuery.some(w => w.word === item.word));
       
-      // For words that start with the query, we want to show all of them
-      // For fuzzy matches, we'll limit to a reasonable number to avoid overwhelming results
-      let fuzzyResultsLimited = fuzzyResults.slice(0, 20); // Limit fuzzy results to 20
+      let fuzzyResultsLimited = fuzzyResults.slice(0, 20); 
       
-      // Combine both results with priority to exact matches
       let filteredWords = [...startsWithQuery, ...fuzzyResultsLimited];
       
-      // Apply any active filters
       if (activeFilters.partOfSpeech) {
         filteredWords = filteredWords.filter(word => {
           const detailedData = detailedWordData[word.word];
@@ -142,14 +123,12 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
         });
       }
       
-      // No limit on suggestions - show all matches that start with the query
       setSuggestions(filteredWords);
     } else {
       setSuggestions([]);
     }
   }, [query, fuse, activeFilters]);
   
-  // Reset filters
   const resetFilters = () => {
     setActiveFilters({ partOfSpeech: null });
     setFilterMenuOpen(false);
@@ -159,10 +138,8 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
     e.preventDefault();
     if (!query.trim()) return;
     
-    // Only search if the query is at least 2 characters
     if (query.trim().length < 2) return;
     
-    // Find the exact match if possible
     const wordKey = query.trim().toLowerCase();
     const matchingWord = Object.keys(detailedWordData).find(
       key => key.toLowerCase() === wordKey
@@ -172,11 +149,7 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
       setSelectedWord(matchingWord);
       setDialogOpen(viewMode === "popup");
       setPopoverOpen(viewMode === "mini");
-      
-      // Record successful search in history
       recordSearch(matchingWord);
-      
-      // Update popular searches after successful search
       const updated = getPopularSearches(5);
       setPopularSearches(updated);
     } 
@@ -187,7 +160,6 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
     setIsFocused(false);
     setSuggestions([]);
     
-    // Get the detailed data for this word
     const wordKey = word.toLowerCase();
     const matchingWord = Object.keys(detailedWordData).find(
       key => key.toLowerCase() === wordKey
@@ -197,11 +169,7 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
       setSelectedWord(matchingWord);
       setDialogOpen(viewMode === "popup");
       setPopoverOpen(viewMode === "mini");
-      
-      // Record this successful search
       recordSearch(matchingWord);
-      
-      // Update popular searches
       const updated = getPopularSearches(5);
       setPopularSearches(updated);
     }
@@ -213,7 +181,6 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
     setPopoverOpen(false);
   };
 
-  // Modified to cycle through view modes
   const cycleViewMode = () => {
     const modes: Array<"popup" | "below" | "mini"> = ["popup", "below", "mini"];
     const currentIndex = modes.indexOf(viewMode);
@@ -227,7 +194,6 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
     }
   };
 
-  // Keep the original changeViewMode function for direct mode switching
   const changeViewMode = (mode: "popup" | "below" | "mini") => {
     setViewMode(mode);
     if (selectedWord) {
@@ -236,47 +202,37 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
     }
   };
 
-  // Completely revised dragging functionality - without touchmove cancellation
   const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
     if (!miniViewRef.current) return;
     
     setIsDragging(true);
     
-    // Store the starting position of the drag
     if ('touches' in e) {
-      // Touch event
       dragStartPos.current = {
         x: e.touches[0].clientX,
         y: e.touches[0].clientY
       };
     } else {
-      // Mouse event
       dragStartPos.current = {
         x: e.clientX,
         y: e.clientY
       };
-      
-      // Only prevent default for mouse events
       e.preventDefault();
     }
     
-    // Store the starting position of the element
     dragStartOffset.current = {
       x: miniViewPosition.x,
       y: miniViewPosition.y
     };
     
-    // Prevent event propagation
     e.stopPropagation();
   };
 
-  // Store the last animation frame ID
   const animationFrameRef = useRef<number | null>(null);
 
   const handleDrag = (e: MouseEvent | TouchEvent) => {
     if (!isDragging) return;
     
-    // Get the current position
     let currentX = 0;
     let currentY = 0;
     
@@ -286,37 +242,29 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
         currentX = touchEvent.touches[0].clientX;
         currentY = touchEvent.touches[0].clientY;
       }
-      // DO NOT call preventDefault() on touch events
     } else {
       const mouseEvent = e as MouseEvent;
       currentX = mouseEvent.clientX;
       currentY = mouseEvent.clientY;
-      
-      // Only prevent default for mouse events
       mouseEvent.preventDefault();
     }
     
-    // Calculate the movement
     const deltaX = currentX - dragStartPos.current.x;
     const deltaY = currentY - dragStartPos.current.y;
     
-    // Update the position
     const newX = dragStartOffset.current.x + deltaX;
     const newY = dragStartOffset.current.y + deltaY;
     
-    // Cancel any pending animation frame to avoid "ghost" effect
     if (animationFrameRef.current !== null) {
       cancelAnimationFrame(animationFrameRef.current);
     }
     
-    // Apply the new position with direct DOM manipulation for smoother dragging
     if (miniViewRef.current) {
       miniViewRef.current.style.transform = `translate3d(0, 0, 0)`;
       miniViewRef.current.style.left = `${newX}px`;
       miniViewRef.current.style.top = `${newY}px`;
     }
     
-    // Update state only once per frame for React's reconciliation
     animationFrameRef.current = requestAnimationFrame(() => {
       setMiniViewPosition({
         x: newX,
@@ -328,9 +276,7 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
   const handleDragEnd = () => {
     setIsDragging(false);
     
-    // Ensure the mini view doesn't go off-screen and sync final position
     if (miniViewRef.current) {
-      // Get the current position directly from the DOM
       const currentLeft = parseFloat(miniViewRef.current.style.left) || miniViewPosition.x;
       const currentTop = parseFloat(miniViewRef.current.style.top) || miniViewPosition.y;
       
@@ -339,23 +285,17 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
       const miniViewWidth = isMinimized ? 100 : miniViewRef.current.offsetWidth;
       const miniViewHeight = miniViewRef.current.offsetHeight;
       
-      // Use the DOM position rather than the state which might be outdated
       let x = currentLeft;
       let y = currentTop;
       
-      // Keep mini view within horizontal bounds
       if (x < 0) x = 0;
       if (x + miniViewWidth > viewportWidth) x = viewportWidth - miniViewWidth;
       
-      // Keep mini view within vertical bounds
       if (y < 0) y = 0;
       if (y + miniViewHeight > viewportHeight) y = viewportHeight - miniViewHeight;
       
-      // Always update state to sync with final DOM position
-      // This prevents the mini view from jumping back
       setMiniViewPosition({ x, y });
       
-      // Also update the DOM directly to prevent any flicker
       miniViewRef.current.style.left = `${x}px`;
       miniViewRef.current.style.top = `${y}px`;
     }
@@ -365,7 +305,6 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
     setIsMinimized(!isMinimized);
   };
 
-  // Set up and clean up drag event listeners
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => handleDrag(e);
     const handleMouseUp = () => handleDragEnd();
@@ -373,7 +312,6 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
     const handleTouchEnd = () => handleDragEnd();
     
     if (isDragging) {
-      // Add event listeners when dragging starts
       document.addEventListener('mousemove', handleMouseMove);
       document.addEventListener('mouseup', handleMouseUp);
       document.addEventListener('touchmove', handleTouchMove, { passive: false });
@@ -381,13 +319,11 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
     }
     
     return () => {
-      // Remove event listeners when component unmounts or dragging stops
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
       document.removeEventListener('touchmove', handleTouchMove);
       document.removeEventListener('touchend', handleTouchEnd);
       
-      // Cancel any pending animation frames to avoid memory leaks
       if (animationFrameRef.current !== null) {
         cancelAnimationFrame(animationFrameRef.current);
         animationFrameRef.current = null;
@@ -395,11 +331,9 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
     };
   }, [isDragging]);
   
-  // Initial position setting when mini view is first shown
   useEffect(() => {
     if (viewMode === "mini" && selectedWord) {
-      // Only set position if it's the first time showing
-      handleDragEnd(); // Check if off-screen
+      handleDragEnd(); 
     }
   }, [viewMode, selectedWord]);
 
@@ -435,7 +369,6 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
               <X className="h-4 w-4 sm:h-5 sm:w-5" />
             </Button>
           )}
-          {/* Filters Popover */}
           <Popover open={filterMenuOpen} onOpenChange={setFilterMenuOpen}>
             <PopoverTrigger asChild>
               <Button 
@@ -514,8 +447,8 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
       {isFocused && suggestions.length > 0 && (
         <div 
           className="absolute mt-2 w-full bg-white rounded-lg shadow-lg border border-gold-2/20 animate-fade-in z-20"
-          onClick={(e) => e.stopPropagation()} // Prevent clicks from bubbling up
-          onWheel={(e) => e.stopPropagation()} // Prevent wheel events from bubbling up
+          onClick={(e) => e.stopPropagation()} 
+          onWheel={(e) => e.stopPropagation()} 
         >
           <div className="flex items-center justify-between px-4 py-2 border-b border-gold-1/10">
             <h2 className="font-medium text-maroon">Mga Mungkahi</h2>
@@ -526,7 +459,7 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
           </div>
           <div 
             className="overflow-y-auto max-h-80 custom-scrollbar p-1" 
-            onScroll={(e) => e.stopPropagation()} // Prevent scroll events from bubbling up
+            onScroll={(e) => e.stopPropagation()} 
           >
             <ul className="divide-y divide-gold-1/10">
               {suggestions.map((item, index) => (
@@ -546,7 +479,6 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
         </div>
       )}
 
-      {/* Modal View with Eye icon */}
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogContent className="max-w-3xl max-h-[90vh] overflow-hidden p-0 pt-6 pb-4">
           <DialogHeader className="px-6 flex flex-row justify-between items-center">
@@ -574,35 +506,34 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
         </DialogContent>
       </Dialog>
 
-      {/* Inline View with Eye icon */}
       {selectedWord && viewMode === "below" && (
         <div className="mt-6 animate-fade-in border border-gold-1/30 rounded-xl bg-white shadow-lg">
           <div className="flex flex-row justify-between items-start px-6 py-4 border-b border-gold-1/20 bg-maroon/5">
-  <div className="text-left">
-    <h2 className="text-2xl font-serif text-maroon font-semibold">Kahulugan ng Salita</h2>
-    <p className="text-muted-foreground text-sm">Tingnan ang detalyadong impormasyon para sa salitang ito.</p>
-  </div>
-  <div className="flex gap-2">
-    <Button 
-      type="button" 
-      variant="ghost" 
-      size="icon"
-      title="Pagpipilian ng Anyo" 
-      onClick={cycleViewMode}
-      className="h-8 w-8"
-      aria-label="Pagpipilian ng Anyo"
-    >
-      <Eye className="h-5 w-5 text-muted-foreground hover:text-maroon transition-colors" />
-    </Button>
-    <Button 
-      variant="ghost" 
-      size="sm" 
-      onClick={handleCloseDetails}
-      aria-label="Isara ang detalye"
-    >
-      <X className="h-5 w-5" />
-    </Button>
-  </div>
+            <div className="text-left">
+              <h2 className="text-2xl font-serif text-maroon font-semibold">Kahulugan ng Salita</h2>
+              <p className="text-muted-foreground text-sm">Tingnan ang detalyadong impormasyon para sa salitang ito.</p>
+            </div>
+            <div className="flex gap-2">
+              <Button 
+                type="button" 
+                variant="ghost" 
+                size="icon"
+                title="Pagpipilian ng Anyo" 
+                onClick={cycleViewMode}
+                className="h-8 w-8"
+                aria-label="Pagpipilian ng Anyo"
+              >
+                <Eye className="h-5 w-5 text-muted-foreground hover:text-maroon transition-colors" />
+              </Button>
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                onClick={handleCloseDetails}
+                aria-label="Isara ang detalye"
+              >
+                <X className="h-5 w-5" />
+              </Button>
+            </div>
           </div>
           <div className="p-6 bg-white/70">
             <WordDetail wordData={detailedWordData[selectedWord]} className="bg-white/80 p-6 rounded-lg shadow-sm" />
@@ -610,7 +541,6 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
         </div>
       )}
 
-      {/* Mini View - Fixed draggable implementation */}
       {selectedWord && viewMode === "mini" && (
         <div 
           ref={miniViewRef}
@@ -627,7 +557,7 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
             left: `${miniViewPosition.x}px`,
             top: `${miniViewPosition.y}px`,
             cursor: isDragging ? 'grabbing' : 'auto',
-            touchAction: 'none' // Prevent browser handling of touch gestures
+            touchAction: 'none' 
           }}
         >
           <div 

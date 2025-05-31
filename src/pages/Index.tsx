@@ -1,3 +1,18 @@
+/**
+ * File: Index.tsx
+ * Author: Glenn Cruz
+ * Created: May 21, 2025
+ * Description: Main homepage for Digiksyunaryo website.
+ * ---------------------------------------------------------------
+ * This page renders the hero section, navigation bar, featured
+ * "Word of the Day" card, trending search terms, and word listings.
+ * It includes search functionality, word filtering, and interactive
+ * word cards with animations.
+ * Built with React, TypeScript, and Tailwind CSS.
+ * 
+ 
+ */
+
 import React from "react";
 import Navbar from "@/components/Navbar";
 import SearchBar, { useSearchHistory } from "@/components/SearchBar";

@@ -1,3 +1,16 @@
+/**
+ * File: App.tsx
+ * Author: Glenn Cruz
+ * Created: May 21, 2025
+ * Description: Main application component for Digiksyunaryo website.
+ * ---------------------------------------------------------------
+ * This file contains the primary application structure including routing,
+ * context providers, and lazy-loaded page components. It handles navigation,
+ * animations between page transitions, and global UI elements.
+ * Built with React, TypeScript, React Router, and Framer Motion.
+ * 
+ */
+
 import { Toaster } from "@/components/ui/toaster";
 import { Analytics } from "@vercel/analytics/react";
 import { Toaster as Sonner } from "@/components/ui/sonner";

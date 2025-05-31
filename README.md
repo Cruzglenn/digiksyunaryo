@@ -50,7 +50,7 @@ Sundin ang mga hakbang na ito para i-setup ang Digiksyunaryo sa iyong local mach
 1. **I-clone ang repository**
 
 ```bash
-git clone https://github.com/yourusername/digiksyunaryo.git
+git clone https://github.com/Cruzglenn/digiksyunaryo.git
 cd digiksyunaryo
 ```
 
@@ -60,37 +60,7 @@ cd digiksyunaryo
 npm install
 ```
 
-3. **I-configure ang environment variables**
 
-Gumawa ng `.env` file sa root directory at i-set ang mga sumusunod na variables:
-
-```
-VITE_GEMINI_API_KEY=your_gemini_api_key_here
-VITE_GEMINI_MODEL=gemini-2.0-flash
-
-# Production settings
-NODE_ENV=production
-
-# Security settings
-VITE_ENABLE_ANTI_DEBUGGING=true
-VITE_ENABLE_STORAGE_ENCRYPTION=true
-VITE_ENABLE_SUSPICIOUS_MONITORING=true
-```
-
-Para sa development mode, gumawa ng `.env.development` file:
-
-```
-VITE_GEMINI_API_KEY=your_gemini_api_key_here
-VITE_GEMINI_MODEL=gemini-2.0-flash
-
-# Development settings
-NODE_ENV=development
-
-# Security settings for development
-VITE_ENABLE_ANTI_DEBUGGING=false
-VITE_ENABLE_STORAGE_ENCRYPTION=true
-VITE_ENABLE_SUSPICIOUS_MONITORING=false
-```
 
 4. **Patakbuhin ang development server**
 

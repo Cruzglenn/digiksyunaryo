@@ -4,6 +4,19 @@ import { X } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
+/**
+ * File: dialog.tsx
+ * Author: Glenn Cruz
+ * Created: May 21, 2025
+ * Description: Dialog component implementation for Digiksyunaryo website.
+ * ---------------------------------------------------------------
+ * This component provides a customized dialog/modal interface using
+ * Radix UI primitives. It includes overlay, content, header, footer,
+ * and title components with proper animations and styling.
+ * Built with React, TypeScript, and Radix UI.
+ * 
+ */
+
 const Dialog = DialogPrimitive.Root
 
 const DialogTrigger = DialogPrimitive.Trigger
