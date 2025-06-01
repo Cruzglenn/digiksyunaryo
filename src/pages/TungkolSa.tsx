@@ -37,10 +37,10 @@ const TeamMemberCard = ({ name, role, imageUrl }: TeamMemberCardProps) => {
       <img 
         src={imageUrl} 
         alt={name} 
-        className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-maroon/20" 
+        className="w-24 h-24 md:w-32 md:h-32 rounded-full mx-auto mb-4 object-cover border-4 border-maroon/20" 
       />
-      <h3 className="text-xl font-medium mb-1 text-dictionary-dark">{name}</h3>
-      <p className="text-gray-600">{role}</p>
+      <h3 className="text-lg md:text-xl font-medium mb-1 text-dictionary-dark">{name}</h3>
+      <p className="text-sm md:text-base text-gray-600">{role}</p>
     </div>
   );
 };
