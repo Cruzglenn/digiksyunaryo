@@ -40,17 +40,27 @@ const TungkolSa = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <h1 className="text-4xl md:text-5xl font-serif font-bold mb-6 text-maroon">
+                <motion.h1
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.2, ease: "backOut" }}
+                  className="text-4xl md:text-5xl font-serif font-bold mb-6 text-maroon"
+                >
                   Tungkol sa Digiksyunaryo
-                </h1>
+                </motion.h1>
                 
                 <div className="w-24 h-1 bg-maroon/60 mx-auto mb-8 rounded-full"></div>
                 
-                <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
+                  className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed"
+                >
                   Ang Digiksyunaryo ay isang komprehensibong digital na diksyunaryo ng wikang Filipino na naglalayong maging 
                   mapagkakatiwalaang sanggunian para sa mga mag-aaral, guro, at sinumang nagnanais na pagyamanin ang 
                   kanilang kaalaman sa wikang Filipino.
-                </p>
+                </motion.p>
               </motion.div>
             </div>
           </div>

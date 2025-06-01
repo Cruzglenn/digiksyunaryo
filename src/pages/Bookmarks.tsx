@@ -96,15 +96,25 @@ const Bookmarks = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <div className="container mx-auto px-4 py-8 animate-fade-in flex-1">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="container mx-auto px-4 py-8 flex-1"
+      >
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
-          <h1 className="text-3xl font-serif font-bold text-maroon flex items-center gap-2">
+          <motion.h1
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2, ease: "backOut" }}
+            className="text-3xl font-serif font-bold text-maroon flex items-center gap-2"
+          >
             <BookmarkCheck className="h-7 w-7" />
             Mga Bookmark
             <span className="text-sm font-normal bg-maroon/10 text-maroon px-2 py-1 rounded-full ml-2">
               {filteredBookmarks.length} {filteredBookmarks.length === 1 ? 'item' : 'items'}
             </span>
-          </h1>
+          </motion.h1>
           
           {bookmarks.length > 0 && (
             <Button 
@@ -223,7 +233,7 @@ const Bookmarks = () => {
             ))}
           </div>
         )}
-      </div>
+      </motion.div>
       <Footer />
     </div>
   );

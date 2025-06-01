@@ -12,6 +12,7 @@ import WordDetail from '@/components/WordDetail';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useDictionaryCache } from '@/hooks/useDictionaryCache';
 import { cn } from '@/lib/utils';
+import { motion } from "framer-motion";
 
 // Define the available filters
 type FilterOptions = {
@@ -159,16 +160,39 @@ const SearchPage = () => {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       
-      <main className="flex-grow container mx-auto px-4 py-8">
+      <motion.main
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="flex-grow container mx-auto px-4 py-8"
+      >
         <div className="mb-6">
-          <Link to="/" className="inline-flex items-center text-sm text-muted-foreground hover:text-maroon transition-colors">
-            <ArrowLeft className="h-4 w-4 mr-1" />
-            Bumalik sa Home
-          </Link>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
+          >
+            <Link to="/" className="inline-flex items-center text-sm text-muted-foreground hover:text-maroon transition-colors">
+              <ArrowLeft className="h-4 w-4 mr-1" />
+              Bumalik sa Home
+            </Link>
+          </motion.div>
           
-          <h1 className="text-3xl font-serif font-bold text-maroon mt-2 mb-6">Advanced na Paghahanap</h1>
+          <motion.h1
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2, ease: "backOut" }}
+            className="text-3xl font-serif font-bold text-maroon mt-2 mb-6"
+          >
+            Advanced na Paghahanap
+          </motion.h1>
           
-          <div className="bg-white rounded-lg border border-gold-1/20 shadow-sm overflow-hidden">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+            className="bg-white rounded-lg border border-gold-1/20 shadow-sm overflow-hidden"
+          >
             {/* Search Input */}
             <div className="p-4 border-b border-gold-1/20 bg-white">
               <div className="relative flex items-center">
@@ -371,9 +395,9 @@ const SearchPage = () => {
                 </TabsContent>
               </Tabs>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </main>
+      </motion.main>
       
       <Footer />
     </div>

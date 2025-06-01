@@ -1,26 +1,40 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
 
 const MakipagUgnay = () => {
-
   return (
     <div className="min-h-screen flex flex-col bg-slate-50">
       <Navbar />
       
       <main className="flex-grow py-16 animate-fade-in">
-        <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="container mx-auto px-4"
+        >
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4 text-maroon">
+              <motion.h1
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.2, ease: "backOut" }}
+                className="text-4xl md:text-5xl font-serif font-bold mb-4 text-maroon"
+              >
                 <span className="inline-block">Makipag-ugnay sa Amin</span>
                 <MapPin className="inline-block ml-3 mb-2" size={28} />
-              </h1>
+              </motion.h1>
               
-              <p className="text-lg text-gray-700 max-w-2xl mx-auto">
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
+                className="text-lg text-gray-700 max-w-2xl mx-auto"
+              >
                 May mga katanungan o mungkahi? Makipag-ugnayan sa amin gamit ang mga sumusunod na impormasyon o bumisita sa aming lokasyon.
-              </p>
+              </motion.p>
               
               <div className="flex flex-wrap gap-4 mt-6 justify-center">
                 <a href="#location" className="inline-flex items-center gap-2 bg-maroon hover:bg-maroon/90 text-white px-5 py-2.5 rounded-lg transition-all font-medium">
@@ -148,7 +162,7 @@ const MakipagUgnay = () => {
 
 
           </div>
-        </div>
+        </motion.div>
       </main>
       
       <Footer />

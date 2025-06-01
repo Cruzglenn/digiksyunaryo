@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -7,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import { toast } from "sonner";
 import emailjs from '@emailjs/browser';
+import { motion } from "framer-motion";
 import { 
   Form,
   FormControl,
@@ -89,18 +89,33 @@ const Feedback = () => {
       <Navbar />
       
       <main className="flex-grow py-16">
-        <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="container mx-auto px-4"
+        >
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4 text-maroon">
+              <motion.h1
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.2, ease: "backOut" }}
+                className="text-4xl md:text-5xl font-serif font-bold mb-4 text-maroon"
+              >
                 <span className="inline-block">Feedback</span>
                 <MessageSquare className="inline-block ml-3 mb-2" size={32} />
-              </h1>
+              </motion.h1>
               
-              <p className="text-lg text-gray-700 max-w-2xl mx-auto">
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
+                className="text-lg text-gray-700 max-w-2xl mx-auto"
+              >
                 Mahalaga sa amin ang iyong mga puna at mungkahi upang patuloy naming mapagbuti ang 
                 Digiksyunaryo. Piliin ang iyong nais na paraan sa pagbibigay ng feedback.
-              </p>
+              </motion.p>
             </div>
             
             <Tabs defaultValue="form" className="w-full">
@@ -281,7 +296,7 @@ const Feedback = () => {
               </TabsContent>
             </Tabs>
           </div>
-        </div>
+        </motion.div>
       </main>
       
       <Footer />
