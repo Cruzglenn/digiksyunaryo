@@ -43,7 +43,7 @@ const MakipagUgnay = () => {
                     <div>
                       <h3 className="font-medium text-foreground text-lg">Email</h3>
                       <a href="mailto:digiksyunaryo@example.com" className="text-maroon hover:underline mt-1 block">
-                        digiksyunaryo@example.com
+                      digiksyunaryo@gmail.com
                       </a>
                       <p className="text-sm text-muted-foreground mt-1">Mag-email para sa mga katanungan</p>
                     </div>
