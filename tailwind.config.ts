@@ -60,7 +60,8 @@ export default {
 					400: "#800000",
 					500: "#800020",
 					600: "#600010",
-					dark: "#2A0000"
+					dark: "#2A0000",
+					darker: "#1A0000" // Added a darker shade for better contrast in gradients
 				},
 				maroon: "#800000",
 				burgundy: "#800020",

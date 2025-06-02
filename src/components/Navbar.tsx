@@ -70,6 +70,7 @@ const Navbar = () => {
               variant="ghost" 
               size="icon" 
               className="hidden md:flex hover:bg-gold-1/10 hover:text-maroon transition-all duration-300"
+              aria-label="Mga Bookmark"
             >
               <Bookmark className="h-5 w-5" />
             </Button>
