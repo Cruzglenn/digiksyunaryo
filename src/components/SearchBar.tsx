@@ -11,6 +11,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { dictionaryWords, detailedWordData } from "@/data/dictionary";
+import { expandSearchTerm } from "@/data/wordRelationships";
 
 interface SearchBarProps {
   className?: string;
@@ -31,21 +32,21 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
     partOfSpeech: string | null;
   }>({ partOfSpeech: null });
   const searchRef = useRef<HTMLDivElement>(null);
-  
+
   const { recordSearch, getPopularSearches, getSampleSearches } = useSearchHistory();
-  
+
   const [miniViewPosition, setMiniViewPosition] = useState({ x: window.innerWidth - 320, y: window.innerHeight - 300 });
   const [isDragging, setIsDragging] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
   const miniViewRef = useRef<HTMLDivElement>(null);
   const dragStartPos = useRef({ x: 0, y: 0 });
   const dragStartOffset = useRef({ x: 0, y: 0 });
-  
+
   useEffect(() => {
     const popular = getPopularSearches(5);
     setPopularSearches(popular.length > 0 ? popular : getSampleSearches());
   }, []);
-  
+
   useEffect(() => {
     if (initialQuery && initialQuery !== query) {
       setQuery(initialQuery);
@@ -54,7 +55,7 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
         const matchingWord = Object.keys(detailedWordData).find(
           key => key.toLowerCase() === wordKey
         );
-        
+
         if (matchingWord) {
           setSelectedWord(matchingWord);
           setDialogOpen(viewMode === "popup");
@@ -91,44 +92,60 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
   }, [detailedWordData]);
 
   const fuse = useMemo(() => new Fuse(dictionaryWords, {
-    keys: ['word'],
-    threshold: 0.4, 
-    distance: 100, 
-    includeScore: true, 
-    useExtendedSearch: true, 
-    ignoreLocation: true, 
-    findAllMatches: true, 
+    keys: ['word', 'definition'],
+    threshold: 0.3,
+    distance: 200,
+    includeScore: true,
+    useExtendedSearch: true,
+    ignoreLocation: true,
+    findAllMatches: true,
   }), [dictionaryWords]);
 
   useEffect(() => {
     if (query.length > 0) {
-      const startsWithQuery = dictionaryWords.filter(word => 
+      const startsWithQuery = dictionaryWords.filter(word =>
         word.word.toLowerCase().startsWith(query.toLowerCase())
       );
-      
+
       const results = fuse.search(query);
       let fuzzyResults = results
         .sort((a, b) => (a.score || 1) - (b.score || 1))
         .map(result => result.item)
         .filter(item => !startsWithQuery.some(w => w.word === item.word));
-      
-      let fuzzyResultsLimited = fuzzyResults.slice(0, 20); 
-      
-      let filteredWords = [...startsWithQuery, ...fuzzyResultsLimited];
-      
+
+      const expandedTerms = expandSearchTerm(query);
+      const relatedWords = expandedTerms.flatMap(term => {
+        return dictionaryWords.filter(word =>
+          word.word.toLowerCase() === term.toLowerCase()
+        );
+      });
+
+      const uniqueRelatedWords = relatedWords.filter(relatedWord =>
+        !startsWithQuery.some(w => w.word === relatedWord.word) &&
+        !fuzzyResults.some(w => w.word === relatedWord.word)
+      );
+
+      let fuzzyResultsLimited = fuzzyResults.slice(0, 15);
+
+      let filteredWords = [
+        ...startsWithQuery,
+        ...uniqueRelatedWords,
+        ...fuzzyResultsLimited
+      ];
+
       if (activeFilters.partOfSpeech) {
         filteredWords = filteredWords.filter(word => {
           const detailedData = detailedWordData[word.word];
           return detailedData?.partOfSpeech === activeFilters.partOfSpeech;
         });
       }
-      
+
       setSuggestions(filteredWords);
     } else {
       setSuggestions([]);
     }
   }, [query, fuse, activeFilters]);
-  
+
   const resetFilters = () => {
     setActiveFilters({ partOfSpeech: null });
     setFilterMenuOpen(false);
@@ -137,14 +154,27 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (!query.trim()) return;
-    
+
     if (query.trim().length < 2) return;
-    
+
     const wordKey = query.trim().toLowerCase();
-    const matchingWord = Object.keys(detailedWordData).find(
+
+    let matchingWord = Object.keys(detailedWordData).find(
       key => key.toLowerCase() === wordKey
     );
-    
+
+    if (!matchingWord) {
+      const expandedTerms = expandSearchTerm(wordKey);
+      if (expandedTerms.length > 0) {
+        matchingWord = expandedTerms[0];
+      } else {
+        const fuzzyResults = fuse.search(wordKey);
+        if (fuzzyResults.length > 0) {
+          matchingWord = fuzzyResults[0].item.word;
+        }
+      }
+    }
+
     if (matchingWord) {
       setSelectedWord(matchingWord);
       setDialogOpen(viewMode === "popup");
@@ -152,7 +182,9 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
       recordSearch(matchingWord);
       const updated = getPopularSearches(5);
       setPopularSearches(updated);
-    } 
+    } else {
+      console.log("No matching word found for:", wordKey);
+    }
   };
 
   const handleSuggestionClick = (word: string) => {

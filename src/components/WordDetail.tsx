@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
-import { Bookmark, BookmarkCheck, Sparkles, ChevronDown, ChevronUp, Loader2, MessageCircleMore, ListChecks, BookOpen, Globe } from "lucide-react";
+import { Bookmark, BookmarkCheck, Sparkles, ChevronDown, ChevronUp, Loader2, MessageCircleMore, ListChecks, BookOpen, Globe, RefreshCw } from "lucide-react";
 import { useBookmarks } from "@/context/BookmarkContext";
 import { Button } from "@/components/ui/button";
 import { useGeminiAI } from "@/hooks/useGeminiAI";
@@ -11,6 +11,15 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 // Interface matching the WordDetails structure in our dictionary.ts file
 interface WordDetails {
@@ -29,31 +38,22 @@ interface WordDetailProps {
 const WordDetail = ({ wordData, className }: WordDetailProps) => {
   if (!wordData) return null;
   
-  // Use a mobile hook
   const isMobile = useIsMobile();
-  
-  // Use bookmarks functionality
   const { addBookmark, removeBookmark, isBookmarked } = useBookmarks();
-  
-  // Check if the word is bookmarked and get its ID if it is
   const wordBookmarkId = isBookmarked(wordData.word);
   
-  // AI enhancement state
   const [aiData, setAiData] = useState<string | null>(null);
   const [isLoadingAI, setIsLoadingAI] = useState(false);
   const [isAIExpanded, setIsAIExpanded] = useState(false);
   const [aiError, setAiError] = useState<string | null>(null);
   
-  // AI hook
-  const { getEnhancedExplanation } = useGeminiAI();
+  const { getEnhancedExplanation, clearAICache } = useGeminiAI();
+  const [isRefreshDialogOpen, setIsRefreshDialogOpen] = useState(false);
   
-  // Handle bookmark toggle
   const handleBookmarkToggle = () => {
     if (wordBookmarkId) {
-      // If already bookmarked, remove it
       removeBookmark(wordBookmarkId);
     } else {
-      // Add as new bookmark
       addBookmark({
         word: wordData.word,
         definition: wordData.definition,
@@ -64,10 +64,8 @@ const WordDetail = ({ wordData, className }: WordDetailProps) => {
     }
   };
 
-  // Handle AI explanation request
-  const handleAIExplanation = async () => {
-    // Toggle off if already expanded
-    if (isAIExpanded && aiData) {
+  const handleAIExplanation = async (forceRefresh = false) => {
+    if (isAIExpanded && aiData && !forceRefresh) {
       setIsAIExpanded(false);
       return;
     }
@@ -76,6 +74,10 @@ const WordDetail = ({ wordData, className }: WordDetailProps) => {
     setAiError(null);
     
     try {
+      if (forceRefresh) {
+        clearAICache();
+      }
+      
       const response = await getEnhancedExplanation(
         wordData.word,
         wordData.definition,
@@ -89,6 +91,9 @@ const WordDetail = ({ wordData, className }: WordDetailProps) => {
       } else {
         setAiData(response.data);
         setIsAIExpanded(true);
+        if (isRefreshDialogOpen) {
+          setIsRefreshDialogOpen(false);
+        }
       }
     } catch (error) {
       setAiError(error instanceof Error ? error.message : "May naganap na error.");
@@ -97,18 +102,20 @@ const WordDetail = ({ wordData, className }: WordDetailProps) => {
     }
   };
   
-  // Parse AI data into structured format
+  const handleRefreshRequest = () => {
+    handleAIExplanation(true);
+  };
+  
   const parseAIData = (data: string) => {
     if (!data) return null;
     
     const sections = {
       paliwanag: "",
-      halimbawa: [],
-      kasingkahulugan: [],
+      halimbawa: [] as string[],
+      kasingkahulugan: [] as string[],
       karagdagan: ""
     };
     
-    // Process content
     const paliwanagMatch = data.match(/PALIWANAG:\s*([^]*?)(?=\n\s*MGA HALIMBAWA:|$)/i);
     if (paliwanagMatch && paliwanagMatch[1]) {
       sections.paliwanag = paliwanagMatch[1].trim();
@@ -189,13 +196,12 @@ const WordDetail = ({ wordData, className }: WordDetailProps) => {
           <p className="text-dictionary-dark font-medium italic">{wordData.example}</p>
         </section>
         
-        {/* AI-Enhanced Explanation Button */}
         <div className="mt-4">
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button
-                  onClick={handleAIExplanation}
+                  onClick={() => handleAIExplanation()} // Added () to call the function
                   className={cn(
                     "w-full py-2 flex items-center justify-between transition-colors overflow-hidden",
                     isAIExpanded ?
@@ -229,7 +235,6 @@ const WordDetail = ({ wordData, className }: WordDetailProps) => {
             </Tooltip>
           </TooltipProvider>
           
-          {/* AI Content */}
           {isAIExpanded && aiData && (
             <div className="p-4 bg-white border border-maroon/20 border-t-0 rounded-b-lg animate-fade-in">
               {aiError ? (
@@ -244,16 +249,16 @@ const WordDetail = ({ wordData, className }: WordDetailProps) => {
                     
                     return (
                       <div className="space-y-4">
-                        {/* Detailed Explanation */}
-                        <div className="border-l-4 border-maroon rounded-r pl-4 py-2 bg-maroon/5">
-                          <h3 className="font-semibold text-maroon flex items-center gap-2 mb-2">
-                            <MessageCircleMore className="h-4 w-4" />
-                            Kahulugan
-                          </h3>
-                          <p className="text-dictionary-dark">{parsedData.paliwanag}</p>
-                        </div>
+                        {parsedData.paliwanag && (
+                            <div className="border-l-4 border-maroon rounded-r pl-4 py-2 bg-maroon/5">
+                            <h3 className="font-semibold text-maroon flex items-center gap-2 mb-2">
+                                <MessageCircleMore className="h-4 w-4" />
+                                Kahulugan
+                            </h3>
+                            <p className="text-dictionary-dark">{parsedData.paliwanag}</p>
+                            </div>
+                        )}
                         
-                        {/* Examples */}
                         {parsedData.halimbawa.length > 0 && (
                           <div className="border-l-4 border-gold-1 rounded-r pl-4 py-2 bg-gold-1/5">
                             <h3 className="font-semibold text-gold-2 flex items-center gap-2 mb-2">
@@ -271,7 +276,6 @@ const WordDetail = ({ wordData, className }: WordDetailProps) => {
                           </div>
                         )}
                         
-                        {/* Synonyms */}
                         {parsedData.kasingkahulugan.length > 0 && (
                           <div className="border-l-4 border-burgundy rounded-r pl-4 py-2 bg-burgundy/5">
                             <h3 className="font-semibold text-burgundy flex items-center gap-2 mb-2">
@@ -291,7 +295,7 @@ const WordDetail = ({ wordData, className }: WordDetailProps) => {
                           </div>
                         )}
                         
-                        {/* Additional Information */}
+                        {/* CORRECTED Additional Information Section */}
                         {parsedData.karagdagan && (
                           <div className="border-l-4 border-slate-400 rounded-r pl-4 py-2 bg-slate-50">
                             <h3 className="font-semibold text-slate-700 flex items-center gap-2 mb-2">
@@ -302,24 +306,48 @@ const WordDetail = ({ wordData, className }: WordDetailProps) => {
                           </div>
                         )}
                         
-                        {/* Footer */}
-                        <div className="flex justify-end items-center border-t border-slate-200 pt-2 text-xs text-slate-500">
-                          <span>Powered by Gemini AI</span>
+                        {/* AI Disclaimer Banner - Smaller Version */}
+                        <div className="mt-3 py-1.5 px-2 bg-amber-50 border border-amber-200 rounded-md flex items-center gap-2 text-xs">
+                          <div className="flex-shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                            </svg>
+                          </div>
+                          <p className="text-amber-800 text-xs">Ang AI paliwanag ay maaaring magkamali. Palaging i-verify ang impormasyon ibinibigay.</p>
                         </div>
-                      </div>
+                      </div> // Closes inner "space-y-4" for parsed sections
                     );
                   })()}
-                </div>
+                </div> // Closes outer "space-y-4" for AI content sections
               )}
-            </div>
+            </div> // Closes "p-4 bg-white..." for AI content
           )}
-        </div>
-      </div>
+           {/* Refresh Dialog Trigger and Content (Example) */}
+           {/* You might want to add a button or mechanism to open this dialog if needed */}
+           <Dialog open={isRefreshDialogOpen} onOpenChange={setIsRefreshDialogOpen}>
+            {/* <DialogTrigger asChild> */}
+            {/*   <Button variant="outline">Refresh AI Data (Trigger Example)</Button> */}
+            {/* </DialogTrigger> */}
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>I-refresh ang AI Data?</DialogTitle>
+                <DialogDescription>
+                  Sigurado ka bang gusto mong kumuha ng panibagong paliwanag mula sa AI? Maaaring ma-clear ang kasalukuyang cache.
+                </DialogDescription>
+              </DialogHeader>
+              <DialogFooter>
+                <Button variant="outline" onClick={() => setIsRefreshDialogOpen(false)}>Kanselahin</Button>
+                <Button onClick={() => { handleRefreshRequest(); setIsRefreshDialogOpen(false); }}>Oo, I-refresh</Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+        </div> {/* Closes "mt-4" div */}
+      </div> {/* Closes outer "space-y-6" div */}
 
       <div className="pt-3 border-t border-gold-1/20">
         <p className="text-sm text-muted-foreground">Ang datos ay mula sa Digiksyunaryo.</p>
       </div>
-    </div>
+    </div> // Closes main "word-detail" div
   );
 };
 

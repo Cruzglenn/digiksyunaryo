@@ -31,6 +31,7 @@ import { dictionaryWords, detailedWordData } from "@/data/dictionary";
 import { getCuratedFeaturedWords } from "@/data/featuredWords";
 import { cn } from "@/lib/utils";
 import { useSearchParams } from "react-router-dom";
+import { expandSearchTerm } from "@/data/wordRelationships";
 
 // Extract and format words from dictionary data to be used in the app
 const getFormattedDictionaryWords = (count: number, startIndex: number = 0) => {
@@ -149,17 +150,36 @@ const Index = () => {
   const filterWordsByAlphabet = (words: ReturnType<typeof getFormattedDictionaryWords>, searchFilter: string = "") => {
     let filtered = words;
     
-    // First filter by search term if provided
     if (searchFilter.trim() !== "") {
       const searchTerm = searchFilter.toLowerCase().trim();
-      filtered = filtered.filter(word => 
+      
+      // Get expanded search terms (synonyms and related words)
+      const expandedTerms = expandSearchTerm(searchTerm);
+      
+      // First filter by direct text matching
+      const directMatches = filtered.filter(word => 
         word.word.toLowerCase().includes(searchTerm) || 
         word.definition.toLowerCase().includes(searchTerm) ||
         word.partOfSpeech.toLowerCase().includes(searchTerm)
       );
+      
+      // Then filter by expanded terms
+      const expandedMatches = expandedTerms.length > 0 ? 
+        filtered.filter(word => 
+          expandedTerms.some(term => word.word.toLowerCase() === term.toLowerCase())
+        ) : [];
+      
+      // Combine results, ensuring no duplicates
+      const combinedResults = [...directMatches];
+      expandedMatches.forEach(match => {
+        if (!combinedResults.some(w => w.word === match.word)) {
+          combinedResults.push(match);
+        }
+      });
+      
+      filtered = combinedResults;
     }
     
-    // Then filter by alphabet if not "all"
     if (alphabetFilter !== "all") {
       filtered = filtered.filter(word => word.word.toUpperCase().startsWith(alphabetFilter));
     }
