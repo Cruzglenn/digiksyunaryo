@@ -1,6 +1,14 @@
 import { Bookmark, Menu, Book, MessageSquare, Phone, Home, X, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
+
+// Preload page components to avoid lazy loading delay
+const preloadPages = () => {
+  import("@/pages/TungkolSa");
+  import("@/pages/Feedback");
+  import("@/pages/MakipagUgnay");
+  import("@/pages/Bookmarks");
+};
 import { Link, useLocation } from "react-router-dom";
 import { toast } from "sonner";
 import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -11,6 +19,11 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const isActive = (path: string) => location.pathname === path;
+  
+  // Preload pages on component mount
+  useEffect(() => {
+    preloadPages();
+  }, []);
   
   // Handle scroll event for navbar shadow
   useEffect(() => {
@@ -46,26 +59,46 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex items-center space-x-6">
-          <Link to="/" className={`font-medium transition-colors flex items-center gap-2 ${isActive('/') ? 'text-maroon' : 'text-muted-foreground hover:text-maroon'}`}>
+          <Link 
+            to="/" 
+            className={`font-medium transition-colors flex items-center gap-2 ${isActive('/') ? 'text-maroon' : 'text-muted-foreground hover:text-maroon'}`}
+            onMouseEnter={preloadPages}
+          >
             <Home className="h-5 w-5" />
             <span>Home</span>
           </Link>
-          <Link to="/tungkol-sa" className={`font-medium transition-colors flex items-center gap-2 ${isActive('/tungkol-sa') ? 'text-maroon' : 'text-muted-foreground hover:text-maroon'}`}>
+          <Link 
+            to="/tungkol-sa" 
+            className={`font-medium transition-colors flex items-center gap-2 ${isActive('/tungkol-sa') ? 'text-maroon' : 'text-muted-foreground hover:text-maroon'}`}
+            onMouseEnter={preloadPages}
+          >
             <Book className="h-5 w-5" />
             <span>Tungkol sa</span>
           </Link>
-          <Link to="/feedback" className={`font-medium transition-colors flex items-center gap-2 ${isActive('/feedback') ? 'text-maroon' : 'text-muted-foreground hover:text-maroon'}`}>
+          <Link 
+            to="/feedback" 
+            className={`font-medium transition-colors flex items-center gap-2 ${isActive('/feedback') ? 'text-maroon' : 'text-muted-foreground hover:text-maroon'}`}
+            onMouseEnter={preloadPages}
+          >
             <MessageSquare className="h-5 w-5" />
             <span>Feedback</span>
           </Link>
-          <Link to="/makipag-ugnay" className={`font-medium transition-colors flex items-center gap-2 ${isActive('/makipag-ugnay') ? 'text-maroon' : 'text-muted-foreground hover:text-maroon'}`}>
+          <Link 
+            to="/makipag-ugnay" 
+            className={`font-medium transition-colors flex items-center gap-2 ${isActive('/makipag-ugnay') ? 'text-maroon' : 'text-muted-foreground hover:text-maroon'}`}
+            onMouseEnter={preloadPages}
+          >
             <Phone className="h-5 w-5" />
             <span>Makipag-ugnay</span>
           </Link>
         </nav>
 
         <div className="flex items-center space-x-2">
-          <Link to="/bookmarks" aria-label="Tingnan ang mga bookmark">
+          <Link 
+            to="/bookmarks" 
+            aria-label="Tingnan ang mga bookmark"
+            onMouseEnter={preloadPages}
+          >
             <Button 
               variant="ghost" 
               size="icon" 
@@ -112,6 +145,7 @@ const Navbar = () => {
                           : "text-muted-foreground hover:text-maroon hover:bg-maroon/5"
                       )}
                       onClick={() => setIsMobileMenuOpen(false)}
+                      onMouseEnter={preloadPages}
                     >
                       <Home className="h-5 w-5" />
                       <span>Home</span>
@@ -125,6 +159,7 @@ const Navbar = () => {
                           : "text-muted-foreground hover:text-maroon hover:bg-maroon/5"
                       )}
                       onClick={() => setIsMobileMenuOpen(false)}
+                      onMouseEnter={preloadPages}
                     >
                       <Book className="h-5 w-5" />
                       <span>Tungkol sa</span>
@@ -138,6 +173,7 @@ const Navbar = () => {
                           : "text-muted-foreground hover:text-maroon hover:bg-maroon/5"
                       )}
                       onClick={() => setIsMobileMenuOpen(false)}
+                      onMouseEnter={preloadPages}
                     >
                       <MessageSquare className="h-5 w-5" />
                       <span>Feedback</span>
@@ -151,6 +187,7 @@ const Navbar = () => {
                           : "text-muted-foreground hover:text-maroon hover:bg-maroon/5"
                       )}
                       onClick={() => setIsMobileMenuOpen(false)}
+                      onMouseEnter={preloadPages}
                     >
                       <Phone className="h-5 w-5" />
                       <span>Makipag-ugnay</span>
@@ -159,6 +196,7 @@ const Navbar = () => {
                       to="/bookmarks" 
                       className="px-4 py-3 font-medium rounded-lg transition-colors flex items-center gap-2 hover:bg-maroon/5 hover:text-maroon"
                       onClick={() => setIsMobileMenuOpen(false)}
+                      onMouseEnter={preloadPages}
                     >
                       <Bookmark className="h-5 w-5" />
                       <span>Mga Bookmark</span>
