@@ -159,8 +159,8 @@ const WordDetail = ({ wordData, className }: WordDetailProps) => {
             </div>
           </div>
           {wordData.pronunciation && wordData.pronunciation !== 'N/A' && (
-            <div className="mt-1">
-              <span className="text-lg text-muted-foreground font-mono italic">{wordData.pronunciation}</span>
+            <div className="flex items-center mt-1 pl-1"> {/* Added flex, items-center, and pl-1 for alignment */}
+              <span className="text-lg text-gray-700 font-mono font-semibold">{wordData.pronunciation}</span>
             </div>
           )}
         </div>

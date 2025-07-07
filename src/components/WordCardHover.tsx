@@ -91,7 +91,7 @@ const WordCardHover = ({
               </span>
               
               {/* Pronunciation */}
-              <div className="text-sm text-muted-foreground mt-1 pl-3 group-hover/feature:translate-x-2 transition duration-200">
+              <div className="text-sm text-gray-700 font-semibold mt-1 pl-4"> {/* Adjusted padding, removed hover translation, and made text more visible */}
                 <span>{pronunciation}</span>
               </div>
             </div>
