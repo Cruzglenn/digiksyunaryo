@@ -108,8 +108,7 @@ const WordCardHover = ({
             
             {/* Example (if available) */}
             {example && (
-              <p className="text-sm italic text-muted-foreground mt-3 pl-3 relative z-10 group-hover/feature:translate-x-2 transition duration-200">
-                "{example}"
+              <p className="text-sm italic text-muted-foreground mt-3 pl-3 relative z-10 group-hover/feature:translate-x-2 transition duration-200" dangerouslySetInnerHTML={{ __html: `"${example}"` }}>
               </p>
             )}
           </div>

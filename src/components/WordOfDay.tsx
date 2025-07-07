@@ -41,7 +41,7 @@ const WordOfDay = () => {
       
       return {
         word,
-        pronunciation,
+        pronunciation: details.pronunciation || pronunciation,
         partOfSpeech: details.partOfSpeech,
         definition: details.definition,
         example: details.example,
@@ -104,8 +104,7 @@ const WordOfDay = () => {
               {wordOfDay.example && (
                 <div>
                   <p className="font-semibold text-burgundy text-sm tracking-wider uppercase mb-1">Halimbawa:</p>
-                  <p className="text-dictionary-dark leading-relaxed italic">
-                    "{wordOfDay.example}"
+                  <p className="text-dictionary-dark leading-relaxed italic" dangerouslySetInnerHTML={{ __html: `"${wordOfDay.example}"` }}>
                   </p>
                 </div>
               )}

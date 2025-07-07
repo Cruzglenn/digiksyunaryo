@@ -24,6 +24,7 @@ import {
 // Interface matching the WordDetails structure in our dictionary.ts file
 interface WordDetails {
   word: string;
+  pronunciation: string;
   definition: string;
   etymology: string;
   partOfSpeech: string;
@@ -57,7 +58,7 @@ const WordDetail = ({ wordData, className }: WordDetailProps) => {
       addBookmark({
         word: wordData.word,
         definition: wordData.definition,
-        pronunciation: wordData.etymology || '',
+        pronunciation: wordData.pronunciation || '',
         partOfSpeech: wordData.partOfSpeech || '',
         example: wordData.example || ''
       });
@@ -150,11 +151,18 @@ const WordDetail = ({ wordData, className }: WordDetailProps) => {
   return (
     <div className={cn("word-detail space-y-6 animate-fade-in", className)}>
       <div className="flex items-center justify-between">
-        <div className="flex items-baseline">
-          <h3 className="text-3xl font-serif font-bold text-maroon mr-3">{wordData.word}</h3>
-          <div className="flex items-center gap-2 text-muted-foreground">
-            <span className="text-sm px-2 py-1 bg-maroon/10 rounded-md text-maroon font-medium">{wordData.partOfSpeech}</span>
+        <div className="flex flex-col">
+          <div className="flex items-baseline">
+            <h3 className="text-3xl font-serif font-bold text-maroon mr-3">{wordData.word}</h3>
+            <div className="flex items-center gap-2 text-muted-foreground">
+              <span className="text-sm px-2 py-1 bg-maroon/10 rounded-md text-maroon font-medium">{wordData.partOfSpeech}</span>
+            </div>
           </div>
+          {wordData.pronunciation && wordData.pronunciation !== 'N/A' && (
+            <div className="mt-1">
+              <span className="text-lg text-muted-foreground font-mono italic">{wordData.pronunciation}</span>
+            </div>
+          )}
         </div>
         <Button
           onClick={handleBookmarkToggle}
@@ -193,7 +201,7 @@ const WordDetail = ({ wordData, className }: WordDetailProps) => {
             <span className="inline-block w-2 h-2 rounded-full bg-burgundy"></span>
             Pangungusap
           </h4>
-          <p className="text-dictionary-dark font-medium italic">{wordData.example}</p>
+          <p className="text-dictionary-dark font-medium italic" dangerouslySetInnerHTML={{ __html: wordData.example }}></p>
         </section>
         
         <div className="mt-4">
@@ -269,7 +277,7 @@ const WordDetail = ({ wordData, className }: WordDetailProps) => {
                               {parsedData.halimbawa.map((example, i) => (
                                 <li key={i} className="flex items-start gap-2">
                                   <span className="inline-block font-medium text-gold-2">{i + 1}.</span>
-                                  <span className="text-dictionary-dark italic">{example}</span>
+                                  <span className="text-dictionary-dark italic" dangerouslySetInnerHTML={{ __html: example }}></span>
                                 </li>
                               ))}
                             </ul>

@@ -331,25 +331,25 @@ const TungkolSa = () => {
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <TeamMemberCard 
-                  name="Legaspi, Leianne Mae G." 
-                  role="Miyembro ng Koponan" 
-                  imageUrl="/placeholder.svg" 
+                <TeamMemberCard
+                  name="Legaspi, Leianne Mae G."
+                  role="Miyembro ng Koponan"
+                  imageUrl="/uploads/legaspi.webp"
                 />
-                <TeamMemberCard 
-                  name="Naranjo, Dominique G." 
-                  role="Miyembro ng Koponan" 
-                  imageUrl="/placeholder.svg" 
+                <TeamMemberCard
+                  name="Naranjo, Dominique G."
+                  role="Miyembro ng Koponan"
+                  imageUrl="/uploads/naranjo.webp"
                 />
-                <TeamMemberCard 
-                  name="Patiga, Camille B." 
-                  role="Miyembro ng Koponan" 
-                  imageUrl="/placeholder.svg" 
+                <TeamMemberCard
+                  name="Patiga, Camille B."
+                  role="Miyembro ng Koponan"
+                  imageUrl="/uploads/patiga.webp"
                 />
-                <TeamMemberCard 
-                  name="Rodriguez, Janela Ann B." 
-                  role="Miyembro ng Koponan" 
-                  imageUrl="/placeholder.svg" 
+                <TeamMemberCard
+                  name="Rodriguez, Janela Ann B."
+                  role="Miyembro ng Koponan"
+                  imageUrl="/uploads/rodriguez.webp"
                 />
               </div>
             </div>

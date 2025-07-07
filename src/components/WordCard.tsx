@@ -72,7 +72,7 @@ const WordCard = ({
         <div className="definition-text">
           <p className="part-of-speech">{partOfSpeech}</p>
           <p className="definition">{definition}</p>
-          {example && <p className="example">"{example}"</p>}
+          {example && <p className="example" dangerouslySetInnerHTML={{ __html: `"${example}"` }}></p>}
         </div>
       </CardContent>
     </Card>

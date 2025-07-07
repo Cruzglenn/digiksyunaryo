@@ -40,7 +40,7 @@ const getFormattedDictionaryWords = (count: number, startIndex: number = 0) => {
   
   return detailedEntries.map(([wordKey, details]) => ({
     word: wordKey,
-    pronunciation: details.etymology ? `/${wordKey.split('').join('-')}/` : '',
+    pronunciation: details.pronunciation || '',
     partOfSpeech: details.partOfSpeech,
     definition: details.definition,
     example: details.example
@@ -55,7 +55,7 @@ const getRandomWords = (count: number, exclude: string[] = []) => {
   
   return selected.map(key => ({
     word: key,
-    pronunciation: detailedWordData[key].etymology ? `/${key.split('').join('-')}/` : '',
+    pronunciation: detailedWordData[key].pronunciation || '',
     partOfSpeech: detailedWordData[key].partOfSpeech,
     definition: detailedWordData[key].definition,
     example: detailedWordData[key].example
@@ -97,7 +97,7 @@ const Index = () => {
     const curatedWordKeys = getCuratedFeaturedWords(wordCount);
     const initialFeatured = curatedWordKeys.map(wordKey => ({
       word: wordKey,
-      pronunciation: detailedWordData[wordKey]?.etymology ? `/${wordKey.split('').join('-')}/` : '',
+      pronunciation: detailedWordData[wordKey]?.pronunciation || '',
       partOfSpeech: detailedWordData[wordKey]?.partOfSpeech || '',
       definition: detailedWordData[wordKey]?.definition || '',
       example: detailedWordData[wordKey]?.example || ''
@@ -116,7 +116,7 @@ const Index = () => {
         
         return {
           word: wordKey,
-          pronunciation: detailedWordData[wordKey]?.etymology ? `/${wordKey.split('').join('-')}/` : '',
+          pronunciation: detailedWordData[wordKey]?.pronunciation || '',
           partOfSpeech: detailedWordData[wordKey]?.partOfSpeech || '',
           definition: detailedWordData[wordKey]?.definition || '',
           example: detailedWordData[wordKey]?.example || ''
@@ -221,7 +221,7 @@ const Index = () => {
       // Map to word objects
       const additionalFeatured = moreCurated.map(wordKey => ({
         word: wordKey,
-        pronunciation: detailedWordData[wordKey]?.etymology ? `/${wordKey.split('').join('-')}/` : '',
+        pronunciation: detailedWordData[wordKey]?.pronunciation || '',
         partOfSpeech: detailedWordData[wordKey]?.partOfSpeech || '',
         definition: detailedWordData[wordKey]?.definition || '',
         example: detailedWordData[wordKey]?.example || ''
@@ -244,7 +244,7 @@ const Index = () => {
           
           return {
             word: wordKey,
-            pronunciation: detailedWordData[wordKey]?.etymology ? `/${wordKey.split('').join('-')}/` : '',
+            pronunciation: detailedWordData[wordKey]?.pronunciation || '',
             partOfSpeech: detailedWordData[wordKey]?.partOfSpeech || '',
             definition: detailedWordData[wordKey]?.definition || '',
             example: detailedWordData[wordKey]?.example || ''
