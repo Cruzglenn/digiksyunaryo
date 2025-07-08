@@ -305,9 +305,9 @@ const BookmarkCard = ({ bookmark, onRemove, onCopy }: BookmarkCardProps) => {
           </div>
           
           <div className="definition-text bg-gray-50 p-3 rounded-lg">
-            <p className="definition text-gray-800">{bookmark.definition}</p>
+            <p className="definition text-gray-800" dangerouslySetInnerHTML={{ __html: bookmark.definition }}></p>
             {bookmark.example && (
-              <p className="example text-gray-600 mt-2 italic">"{bookmark.example}"</p>
+              <p className="example text-gray-600 mt-2 italic" dangerouslySetInnerHTML={{ __html: `"${bookmark.example}"` }}></p>
             )}
           </div>
           
@@ -354,9 +354,9 @@ const BookmarkListItem = ({ bookmark, onRemove, onCopy }: BookmarkCardProps) => 
                 </div>
               </div>
               
-              <p className="definition text-gray-800 mt-1">{bookmark.definition}</p>
+              <p className="definition text-gray-800 mt-1" dangerouslySetInnerHTML={{ __html: bookmark.definition }}></p>
               {bookmark.example && (
-                <p className="example text-gray-600 text-sm mt-1 italic">"{bookmark.example}"</p>
+                <p className="example text-gray-600 text-sm mt-1 italic" dangerouslySetInnerHTML={{ __html: `"${bookmark.example}"` }}></p>
               )}
               
               <div className="text-xs text-muted-foreground md:hidden mt-2">

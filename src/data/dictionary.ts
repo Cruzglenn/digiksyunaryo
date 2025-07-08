@@ -297,7 +297,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/eyt.ti.eyt.ti/',
     definition: 'mahina ang pag-iisip',
     etymology: "nagmula sa salitang 'bobo' dahil ang numero na 8 ay hugis letrang B at ang numero 0 ay hugis letrang o. kadalasang ginagamit ng mga gamer sa Henerasyong Alpha na inilalagayan sa gaming chat box o di kaya'y sa pagkakaroon ng kumbersasyon sa internet.",
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: '<strong>8080</strong> ka kasi, namatay ka tuloy agad!',
   },
   9001: {
@@ -305,7 +305,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/nayn.ti.sí.ro.wán/',
     definition: 'higit pa sa inaasahan, napakatindi',
     etymology: "mula sa meme ng Dragon Ball Z na 'It's over 9000'",
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: "Yung energy niya kanina sa game? Legit over <strong>9001</strong>, parang boss level!",
   },
   AllFax: {
@@ -313,7 +313,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/ol.fáks/',
     definition: 'purong katotohanan',
     etymology: "ang salitang 'fax' ay hango sa salitang ingles na facts na nangangahulugang katotohanan",
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Huwag mo na pagdudahan, <strong>all fax</strong> talaga.',
   },
   Aura: {
@@ -321,7 +321,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/o.ra/',
     definition: 'enerhiya ng isang tao',
     etymology: 'hango sa salitang ingles na nangangahulugang atmospera ng paligid',
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Kakaiba \'yang <strong>aura</strong> mo ngayon ah.',
   },
   Ayo: {
@@ -329,7 +329,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/e.yów/',
     definition: 'pangungumusta',
     etymology: "binagong bersyon ng salitang 'yo!' na madalas gamitin sa kultura ng internet world at panawag sa isang tao",
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: '<strong>Ayo</strong>? Tuloy ba tayo sa gala mamaya?',
   },
   Backrooms: {
@@ -337,7 +337,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/bak.rúms',
     definition: 'nakakalito, parang walang katapusan, nakakaba.',
     etymology: 'Mula sa konsepto ng meme na isang larawang tila silid na walang laman at walang katapusan o nagmistulang maze. ito rin ay tinaguriang alternative dimension ng mga kabataan sa Henerasyong Alpha.',
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: "Ang hirap naman sa <strong>backroom</strong> level na 'to!",
   },
   Baks: {
@@ -345,7 +345,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/báks/',
     definition: "kasingkahulugan ng salitang 'bading'",
     etymology: "pinaikling bersyon ng salitang 'bakla'",
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: '<strong>Baks</strong>, sobrang ganda mo!',
   },
   Bembang: {
@@ -353,7 +353,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/bem.bang/',
     definition: 'sekswal na pagtatalik',
     etymology: "Isang salitang batay sa tunog na maaaring magbigay kahulugan bilang 'pagsabog' o 'pagputok'. Nasa kontekstong seksuwal ang salitang ito na madalas ginagamit sa street culture.",
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Nagulat ako sa pelikulang pinanood natin, may <strong>bembang</strong>!',
   },
   Beta: {
@@ -361,7 +361,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/be.tá/',
     definition: 'sumunod sa sikat na trend o pumapangalawa sa popular na mga aktibidad o bagay',
     etymology: 'hinango sa hierarchy na kultura ng Griyego na kung saan alpha ang dominante o representasyon nang pinakamataas at ang beta ay ang pumapanagalawa o submissive',
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Bro, sobrang <strong>beta</strong> vibes mo talaga. Nahihiya ka pa lumapit sa crush mo.',
   },
   BigL: {
@@ -369,7 +369,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/big.el/',
     definition: 'matinding pagkatalo o pagkabigo',
     etymology: "dalawang salita mula sa ingles na 'big' at 'L' na nangangahulugang 'loss'",
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: 'Ang bagal kasi ng wifi! <strong>Big L</strong> pa nga!',
   },
   Bop: {
@@ -377,7 +377,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/bap/',
     definition: 'kantang paulit-ulit o kinawiwilihan mong pinapakinggan.',
     etymology: "noong taong 1940's, ang bebop ay estilo ng musika sa anyong jazz at karaniwang tumutukoy sa mabibilis na tempo ng tugtog. sa Henerasyong Alpha ay mas kinilala ang 'bop' bilang pagtukoy sa mga sikat o popular na nakapupukaw ng kanilang enerhiya.",
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: '<strong>Bop</strong> na <strong>bop</strong> ang dance trend sa tiktok!',
   },
   Bossing: {
@@ -385,7 +385,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/bó.ssing/',
     definition: 'pagbati sa mga kaibigan',
     etymology: 'sumikat ang salitang ito at naging matunog dahil sa social media influencer na si Malupiton. sa kaniyang mga content videos ay ginagamit niya ang salitang ito bilang panawag sa kaniyang kapwa na kalahok sa video',
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: '<strong>Bossing</strong>! Kumusta ang buhay?',
   },
   Brainrot: {
@@ -393,7 +393,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/bréyn.rat/',
     definition: 'magulong isip, wala sa katinuan',
     etymology: "pinaghalong salita mula sa ingles na 'brain' (utak) at 'rot' (mabulok). sa paglaganap ng salitang ito sa mga social media platform ay tumutukoy na ito sa mga bagay na walang kabuluhan at patuloy na kinahuhumalingan sapagkat ito'y masayang balik-balikan",
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Yung mga kaklase kong babae na K-pop <strong>brainrot</strong> na.',
   },
   BurgerKaSakin: {
@@ -401,7 +401,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/bur.gér/ ka/ sa.kín/',
     definition: 'pang-aakit',
     etymology: "sa konteksto ng meme culture, uri ito ng patawang pagbabanta sa kaibigan o kakilala sa internet",
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: "Gaganti ako sa'yo, <strong>burger ka sakin</strong>!",
   },
   Burts: {
@@ -417,7 +417,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/bás/',
     definition: 'kahanga-hanga',
     etymology: "binagong salita ng 'bust' na may ibig sabihin na sumabog.",
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: 'Ang <strong>buss</strong> ng bagong kanta ni Skusta Clee!',
   },
   Bussin: {
@@ -425,7 +425,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/bas.sín/',
     definition: 'napakasarap',
     etymology: 'mas sumikat ang terminolohiyang ito noong 2020, ginagamit ito bilang paghatol sa kalinamnaman ng mga pagkain na video content ng TikTok influencers',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: 'O-order ulit ako ng chicken wings nila, <strong>bussin</strong> kahit pang-limang balik ko na rito.',
   },
   Buttah: {
@@ -433,7 +433,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/bo.tâ/',
     definition: 'taong may malakas ang appeal o may kumpyansa sa sarili',
     etymology: "Mas impormal na pagbigkas ng salitang 'butter' at sa anyo nitong makinis o smooth ay ganito na rin bigyang-puri ang mga netizens na pinasimulan sa TikTok ng mga henerasyong Alpha",
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: '<strong>Buttah</strong> vibes kung rumampa si Wynwyn.',
   },
   Candy: {
@@ -441,7 +441,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/ken.dí/',
     definition: 'maarte, malandi',
     etymology: 'Nagmula at ginagamit ito bilang metaphor para sa taong sobrang ganda o guwapo—eye candy. Minsan din itong ginagamit para ipahiwatig na ang isang tao ay “delicious-looking” o thirst trap sa social media.',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: "Kilala mo ba 'yan? <strong>Candy</strong> naman 'yan!",
   },
   Cap: {
@@ -449,7 +449,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/káp/',
     definition: 'Sinungaling o nagdadagdag ng kwento.',
     etymology: "Sa AAVE, ang 'cap' ay may kahulugang pagsisinungaling o pag-imbento ng kwento, samantalang ang 'no cap' ay isang paraan ng pagsasabi ng 'wala akong binabaluktot' o 'hindi ako nagsisinungaling.'",
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Hindi ka naman nag-aral eh, <strong>cap</strong> ka talaga.',
   },
   CaughtIn4k: {
@@ -457,7 +457,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/kot/ in/ for.key/',
     definition: 'Huling-huli sa akto, may pruweba pa.',
     etymology: 'Idyomatikong ekspresyon ito upang tukuyin ang mga nahuling tao dahil sa pagkakasala o katawa-tawang pangyayari na may matibay na pruweba mula sa isang bidyo o larawan. 4k ang sumisimbolo sa resolution ng isang bidyo na may magandang kalidad.',
-    partOfSpeech: 'pang-abay',
+    partOfSpeech: 'Pang-abay',
     example: '<strong>Caught in 4k</strong> ang pagkadapa mo kahapon ah.',
   },
   BlbBluhluhbuh: {
@@ -473,7 +473,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/tsád/ al.pa/',
     definition: 'Yung lalaking may dating, lakas ng loob, o alpha vibes.',
     etymology: "Sa internet forums sa pagitan ng taong 2000-2010, ang Chad ay stereotype na pangalang naglalarawan sa isang lalaki na guwapo, may alpha-male na dating, magandang katawan at nakakakuha sa atensyon ng kababaihan. Inangkla naman ito sa dynamics ng social ng hierarchy kung saan ang mga alpha ang siyang dominante sa grupo.",
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Yan ang gusto ko sa lalaki, yung may aurang <strong>chad alpha</strong>.',
   },
   Cheugy: {
@@ -481,7 +481,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/tsú.gi/',
     definition: 'Laos o pilit maging uso pero hindi na cool.',
     etymology: "Pagpapaliwanag sa TikTok, ang salitang ito raw ay bagay gamitin sa mga taong try-hard ang enerhiya para sa isang trend kahit a ito ay luma na o outdated.",
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: 'Ang <strong>cheugy</strong> naman ng make-up mo!',
   },
   Clapback: {
@@ -489,7 +489,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/klap.bak/',
     definition: 'Matalas at matalinong sagot sa insulto—pang-asar pabalik.',
     etymology: 'Taong 2010 noong gamitin ito sa twitter threads at instagram comments bilang pagtukoy sa pagbibigay wais na pahayag laban sa mga kritisismong natatanggap ng mga tao.',
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Tiklop siya nung nag-<strong>clapback</strong> ako eh.',
   },
   Clout: {
@@ -497,7 +497,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/klawt/',
     definition: 'Sikat o may impluwensya, lalo na online',
     etymology: 'Ang implikasyon nito sa hip-hop culture at social media tulad ng Instagram ay pagpapakita ng kapangyarihan o social status na maaaring makaimpluwensiya sa ibang tao.',
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Makabili nga ng usong starbucks tumbler, pang-<strong>clout</strong> lang!',
   },
   Cook: {
@@ -505,7 +505,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/kúk/',
     definition: 'mahusay na pagtatanghal, nakakalaglag ng panga sa galing',
     etymology: 'Sa modernong internet at Gen Alpha lingo, ag cook ay ginagamit sa mga bagay na isinagawa nang may magandang resulta.',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: 'Hanep talaga sumayaw si Niana, <strong>cook</strong> performance!',
   },
   Copium: {
@@ -513,7 +513,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/kóp.yum/',
     definition: 'pagpapanggap',
     etymology: 'Pinagsamang salita na cope (pagharap sa isang sitwasyon) at opium (uri ng gamot na pampahupa ng sakit)',
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Tamang <strong>copium</strong> lang dahil sa pagkakamaling nagawa ko sa bahay.',
   },
   Core: {
@@ -521,7 +521,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/kór/',
     definition: 'pagsasalarawan ng aesthetic o vibe ng isang bagay o tao.',
     etymology: "Nagmula ito sa English word na 'core', na nangangahulugang 'pinakasentro' o 'pinakapuso' ng isang bagay. Ginamit ito ng Gen Alpha para ilarawan ang aesthetic o vibe ng isang bagay o tao.",
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Bagay pala sa loob ng kwarto mo ang vintage <strong>core</strong>.',
   },
   CoWorkerCore: {
@@ -529,7 +529,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/ko.worker/ kór/',
     definition: 'usap-usapan ng mga empleyado',
     etymology: 'Portmanteau ng “coworker” (kasamahan sa trabaho) at “core” (vibe). Ginagamit para ilarawan ang kilos o itsura ng isang tao na parang officemate mo.',
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Aliw na aliw ako sa usapan namin sa opisina, talagang <strong>co-worker core</strong>!',
   },
   Cracked: {
@@ -537,7 +537,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/krákt/',
     definition: 'magaling, mahusay',
     etymology: 'Negatibo ang literal na kahulugan nito (nabali) subalit sa henerasyong alpha, ang implikasyon nito sa gaming culture ay ang manlalarong may natatanging galing at hindi mapantayang lakas.',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: 'Kuya, ang hirap mo kalabanin sa ML, ang <strong>cracked</strong> mo maglaro!',
   },
   Cringe: {
@@ -545,7 +545,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/krinj/',
     definition: 'kahiya-hiya, hindi kaaya-aya',
     etymology: "Hango ang slang word na to sa kahulugan ng cringe sa salitang ngles bilang nakakahiya, awkward o outdated. Kalimitang ginagamit sa konteksto ng internet patungkol sa mga content na walang humor o hindi cool na mga bagay na lumilitaw sa internet culture.",
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: 'Sino ba kumanta nito? Ang <strong>cringe</strong> naman ng lyrics.',
   },
   Dank: {
@@ -553,7 +553,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/dánk/',
     definition: 'Astig, solid, o mataas ang kalidad.',
     etymology: 'Sa reddit ay ginamit ito bilang bahagi ng meme culture na kung saan ang dank memes ay ang mga labis na nakatutuwang mga meme posts.',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: '<strong>Dank</strong> na <strong>dank</strong> yung bagong bili mong sapatos!',
   },
   Dasurv: {
@@ -561,7 +561,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/da.sórv/',
     definition: 'karapat-dapat',
     etymology: "binagong porma ng salitang ingles na 'deserve'",
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: 'Lagi ka kasing nangongopya. Baba tuloy ng grades mo, <strong>dasurv</strong>!',
   },
   Delulu: {
@@ -569,7 +569,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/delu.lú/',
     definition: 'malayo sa katotohanan',
     etymology: "balbal na salitang hinango mula sa salitang ingles na 'delusional' na may kahulugang maling ideya o pag i-ilusyon sa isang ideya",
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: 'Ang sarap talaga maging <strong>delulu</strong> kapag nabobored.',
   },
   DempseyRoll: {
@@ -577,7 +577,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/démp.sey/ rol/',
     definition: 'bugbog sarado, malalang pagkatalo',
     etymology: "Nag-ugat ito sa heavyweight boxing champion noong 1920's na si Jack Dempsey at ang kaniyang kahusayan ay pinangalanang dempsey roll bilang taktika sa larangan ng boksing. Sumunod naman ay sa manga/anime boxing series na 'Hajime no Ippo' kung saan ang bidang tauhan ay may iisang galaw na tinawag ding dempsey roll na signature move niya upang taluning maigi ang kalaban. Lumitaw na ito sa tiktok at Twitter bilang paglalaarawan sa pagkatalo sa isang argumento.",
-    partOfSpeech: 'pandiwa',
+    partOfSpeech: 'Pandiwa',
     example: "Ano? Na-<strong>dempsey roll</strong> ka sa comment section 'no?",
   },
   Demure: {
@@ -585,7 +585,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/dem.yur/',
     definition: 'mahinhin o maingat na pag-uugali',
     etymology: 'Ito ay isang pormal na salitang Ingles at mas umusbong na gamitin lamang sa Henerasyong Alpha.',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: 'Parang prinsesa magsalita, sobrang <strong>demure</strong>!',
   },
   DogWater: {
@@ -593,7 +593,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/dog/ wa.ter/',
     definition: 'sablay, o palpak',
     etymology: "Umusbong sa gaming culture ng henerasyong alpha partikular na sa larong Fortnite. Katulad ng paghahambing sa tubig ng aso walang silbi o kwenta. Ginamit ito ng gamer na si M1LK sa pang-iinsulto sa larong Fortnite. Isa itong pangungutya sa kahinaan at pagiging patapon ng kalaban.",
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Tinuruan mo pa ako mag ML, <strong>dog water</strong> ka naman palang lumaro.',
   },
   Drip: {
@@ -601,7 +601,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/drìp/',
     definition: 'estilo ng pananamit',
     etymology: 'Sa hiphop culture ay tumutukoy ang salitang drip bilang pagpapakita sa mga magagarbo o branded na mga gamit. Nilapat naman ito sa kanta ni Playboi Carti at Metro Boomin bilang mga mamahaling alahas o malakas na dating dahil sa maangas na fashion. Pagdating sa TikTok at internet culture ay nabigyang implikasyon ito sa mga daily fashion talk.',
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Lupit talaga ng <strong>drip</strong> mo!',
   },
   Drippy: {
@@ -609,7 +609,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/drí.pi/',
     definition: 'maangas na estilo ng pananamit',
     etymology: 'Kaugnay sa etimolohiya ng salitang drip, ito naman ay tumutukoy sa kaangasang antas ng pananamit ng isang tao.',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: 'Paturo naman maging <strong>drippy</strong>, para maangas sa Instagram ko.',
   },
   Ea: {
@@ -633,7 +633,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/ít/',
     definition: 'Ang galing',
     etymology: 'Nagmula sa English word na “eat” pero ginagamit bilang slang na nangangahulugang “you slayed” o “ang galing mo!”',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: 'Kapag talaga siya na ang nag-report, <strong>eat</strong> malala talaga kung magpaliwanag.',
   },
   EchoPapa: {
@@ -665,7 +665,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/e.dúls/',
     definition: 'matanda/ mga nakakatanda',
     etymology: "Madalas gamitin sa Twitter at TikTok bilang mapanlarong anyo ng salitang, 'elders' upang mabigyang tawag ang mga matatanda sa social media na hindi kayang makisabay sa uso.",
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Dapat sa mga <strong>eduls</strong> walang social media, puro bash lang naman ginagawa.',
   },
   Eka: {
@@ -721,7 +721,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/erm/ ak.twá.li/',
     definition: 'sa totoo lang',
     etymology: 'Nagmula sa English filler “erm” at “actually”, ginagamit kapag may gustong i-correct o i-fact check na parang know-it-all.',
-    partOfSpeech: 'pang-abay',
+    partOfSpeech: 'Pang-abay',
     example: '<strong>Erm actually</strong>, tama lang na gumala tayo pagkatapos mapagod sa midterm exam.',
   },
   Estetik: {
@@ -729,7 +729,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/es.te.tík/',
     definition: 'maganda sa mata/ may dating',
     etymology: 'Nagmula ito sa salitang aestethic o estethic ng ingles na may kinalaman sa sining at pinaikling bersyon ito ng salin sa Filipino na estetiko.',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: 'Ang <strong>estetik</strong> naman ng porma mo!',
   },
   ExtraSoExtra: {
@@ -737,7 +737,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/éks.tra/',
     definition: 'pabida o pabibo',
     etymology: 'mula sa salitang ingles na extra (dagdag) na inilalapat sa konteksto ng kaugalin ng isang tao kapag siya ay sumosobra sa pagpapapansin o pagpapasikat sa internet culture',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: "Hindi naman ganiyan pinapagawa ni ma'am eh, <strong>so extra</strong>!",
   },
   Eyy: {
@@ -745,7 +745,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/éy/',
     definition: 'panawag o pambati',
     etymology: "hango sa salitang ingles na 'hey'. impormal na ekspresyon din itong mga henerasyong alpha kapag nasasabik, pagpapakita ng kasiyahan ginaganahan sa isang bagay.",
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: '<strong>Eyy</strong>, papasok ka ba bukas?',
   },
   Fab: {
@@ -753,7 +753,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/fab/',
     definition: 'astig, maganda,',
     etymology: "Pinaikling salita mula sa salitang Ingles na 'fabulous'",
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: 'Bagay ba to sa akin or hindi siya <strong>fab</strong>?',
   },
   FanumTax: {
@@ -761,7 +761,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/fa.num/ táks/',
     definition: 'buraot',
     etymology: "Nag-umpisa ito sa isang internet personality na si Fanum, isang Twitch streamer na kung saan sa kaniyang mga livestream ay madalas niyang kinukuhanan ng pagkain ang mga kasapi sa stream ng walang permiso. Tinawag niya itong fanum tax at mas naging viral ito sa TikTok dahil sa paglalagay ng salitang ito sa kaparehong aksyon.",
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Na-<strong>fanum tax</strong> na agad yung burger na naiwan ko sa lamesa ah.',
   },
   Fax: {
@@ -769,7 +769,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/fáks/',
     definition: 'tunay, totoo',
     etymology: 'pinaikling salita na facts at ibinatay sa tunog',
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'May kwento ako tungkol sa tindera ng karinderya, <strong>fax</strong> lang.',
   },
   FaxOnly: {
@@ -777,7 +777,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/fáks/ on.lì/',
     definition: 'puro totoo / katotohanan lang dapat',
     etymology: "fax (facts), nangangahulugan sa internet culture na pagsasabi ng pawang mga katotohanan lamang o sa gaming culture ng henerasyong alpha ay maaaring gamitin ito bilang pang realtalk o trashtalk sa koponan",
-    partOfSpeech: 'pang-abay',
+    partOfSpeech: 'Pang-abay',
     example: 'Ang hina mo bro, <strong>fax only</strong>!',
   },
   Fighting: {
@@ -785,7 +785,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/fáy.ting/',
     definition: 'Laban lang',
     etymology: "Mula sa literal na kahulugan ng salitang ingles na 'Fighting' (paglalaban). Sa Henerasyong Alpha, ginagamit din ang salitang fighting upang magbigay suporta sa taong napanghihinaan ng loob o nalulungkot.",
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Kaunti na lang, gagraduate ka na. <strong>Fighting</strong>!',
   },
   Finna: {
@@ -793,7 +793,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/fáyn.na/',
     definition: 'gagawin pa lang o malapit nang gawin',
     etymology: "Kontraksyon ng salitang 'fixing to'.",
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: "<strong>Finna</strong> tulog pagkatapos 'kong maglaba.",
   },
   Fire: {
@@ -801,7 +801,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/fáyr/',
     definition: 'Angas, astig, sobrang galing o cool.',
     etymology: "Mula sa salitang ingles na ang kahulugan ay apoy, karaniwang tinuturing bilang nakasusunog at mainit. Sa kultura ng kabataan sa Henerasyong Alpha at kabilang na ang Henerasyong Z, ginagamit ang salitang ito upang bigyang papuri ang kaastigan o kaangasan ng tao o ng isang bagay. Maaari rin itong paglalarawan sa katapangan at kung minsan pa'y ginagamit ito bilang emoji lamang (🔥).",
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: 'Iba ka talaga pag dating sa sayawan, sobrang <strong>fire</strong>!',
   },
   FitCheck: {
@@ -809,7 +809,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/fít/ tsék/',
     definition: 'Isang mabilis na paraan para ipakita o ipaalam ang kasuotan ng isang tao.',
     etymology: "Naging popular ang pariralang ito sa mga social media influencer lalo't higit sa mga nakatutok sa fashion. Ito ay karaniwang ginagamit upang mabigyang puri o kilatisin ang kasuotan o porma ng isang tao.",
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Ang ganda ng damit mo! <strong>Fit check</strong> nga!',
   },
   Flaker: {
@@ -817,7 +817,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/fley.kér/',
     definition: 'Taong hindi tumutuloy o umaatras sa mga plano.',
     etymology: "Mula ito sa salitang-ugat ng Ingles na 'flake' na may kahulugang unreliable o hindi mapagkakatiwalaan",
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: "Ayoko sa kaniya, <strong>flaker</strong> 'yan!",
   },
   Flex: {
@@ -825,7 +825,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/fléks/',
     definition: 'pagpapakita o pagyayabang',
     etymology: "Noong taong 1980-1990, ang salitang flexing ay madalas na ginagamit sa pagpapakitang-gilas ng kapangyarihan o kayamanan. Noong umusbong naman ito sa social media noong 2010 upang magyabang o di kaya'y pabirong pagpapakitang-gilas ng kanilang mga nakamit sa buhay.",
-    partOfSpeech: 'pandiwa',
+    partOfSpeech: 'Pandiwa',
     example: '<strong>Flex</strong> ko lang yung iPhone na niregalo ng Mama ko galing Singapore.',
   },
   Fomo: {
@@ -1369,7 +1369,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/nat.klik.béyt!/',
     definition: 'ginagamit para sabihing legit ang isang claim.',
     etymology: "'Not' (hindi) + 'clickbait' (isang nakakapanlinlang na headline na naglalayong hikayatin ang mga tao na mag-click).",
-    partOfSpeech: 'pang-abay',
+    partOfSpeech: 'Pang-abay',
     example: "'yung kwento niya, <strong>not clickbait</strong> talaga—lahat totoo!",
   },
   NotIt: {
@@ -1393,7 +1393,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/nat.da/',
     definition: 'expression to call out something funny/awkward.',
     etymology: 'Ang "Not the" ay may pagkakatulad sa “not me” na may mga modernong adaptasyon na ginagamit sa mga meme at online na usapan upang ipahayag ang pagtanggi o pagtukoy sa isang awkward o nakakatawang sitwasyon.',
-    partOfSpeech: 'pang-abay',
+    partOfSpeech: 'Pang-abay',
     example: '<strong>Not the</strong> teacher na late dumating pero galit pa rin sa late.',
   },
   Npc: {
@@ -1401,7 +1401,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/én.pi.sí/',
     definition: '(Non-playable character) – tao na parang walang sariling desisyon o scripted gumalaw.',
     etymology: "Maikling bersyon ng 'non-player character' sa mga video game. Sa slang, ginagamit ito upang ilarawan ang mga taong tila sumusunod lamang sa script ng lipunan at walang sariling opinyon.",
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Siya \'yung tipo ng tao na parang <strong>NPC</strong> lang—walang sariling desisyon.',
   },
   Nunya: {
@@ -1417,7 +1417,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/ób.ses/',
     definition: 'sobra ang pagkagusto.',
     etymology: "Mula sa salitang Ingles na 'obsessed,' na nangangahulugang labis na pagkahumaling o pagkagusto sa isang bagay o tao.",
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: "<strong>Obsessed</strong> ako sa bagong P-pop group na 'yon, as in!",
   },
   Off: {
@@ -1433,7 +1433,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/o.dyí/',
     definition: "Maikling paraan ng pagsulat ng 'original gangster' o 'original,' na tumutukoy sa isang respetadong tao na matagal na sa isang grupo o aktibidad.",
     etymology: "Nagmula sa salitng Original Gangster o Original God, na ang ibig sabihin ay eksperto sa isang bagay o sitwasyon. Sa kasalukuyan, ginagamit ito upang ipahiwatig ang respeto sa isang taong bihasa o may mataas na antas ng karanasan.",
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: "Si kuya <strong>OG</strong> sa ML, siya ang nagturo sa'kin maglaro.",
   },
   Ohio: {
@@ -1441,7 +1441,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: "/o.há.yo'/",
     definition: 'Madalas gamitin sa mga nakakatawa o kakaibang video online nang walang tiyak na kahulugan.',
     etymology: "Bagaman isang estado sa U.S., sa internet slang, ginagamit ang 'Ohio' upang tukuyin ang mga kakaiba o surreal na pangyayari, batay sa meme na 'Only in Ohio.'",
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Anong nangyayari dito? Parang nasa <strong>Ohio</strong> ako, ang weird!',
   },
   OkBoomer: {
@@ -1449,7 +1449,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/ó.key.bú.mer/',
     definition: 'Sinasabi o Pampatigil sa mga matatandang hindi nakakasabay sa uso, o masyadong old tradition pa rin.',
     etymology: "Dalawang salitang pinagsama. Ang 'Ok' na nagmula sa orihinal na okay lang o ayos lang, at Boomer naman ay terminong ginagamit pamalit sa salitang 'matatanda' o sa mga may edad na millenials. Isang itong pariralang naging viral noong 2019, ginagamit ito upang ipahayag ang pagkadismaya o pagtanggi sa mga pananaw ng mas nakatatandang henerasyon, partikular ang mga 'baby boomers.'",
-    partOfSpeech: 'pandamdam',
+    partOfSpeech: 'Pandamdam',
     example: 'Sabi ng matanda na nakausap ko, mas okay daw ang buhay noon. <strong>OK boomer</strong>!',
   },
   OldSchool: {
@@ -1457,7 +1457,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/óld.skúl/',
     definition: 'Tumutukoy sa mga bagay, istilo, o ideya na mula sa nakaraan o tradisyonal.',
     etymology: 'Ito ay dalawang salitang ingles na pinagsama na nangangahulugan o nagpapahiwatig ng respeto o nostalgia sa mga tradisyonal na paraan.',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: '<strong>Old school</strong> talaga si mama, ayaw ng online shopping.',
   },
   OnFleek: {
@@ -1465,7 +1465,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/on.flík/',
     definition: 'Ginagamit upang ilarawan ang isang bagay na perpekto, napakaganda, o napakahusay, lalo na ang hitsura o pagkakagawa.',
     etymology: "Nagsimula itong maging popular noong 2014 mula sa isang Vine video, ang 'on fleek' ay nangangahulugang perpekto o napakaganda, lalo na sa konteksto ng hitsura.",
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: '<strong>On fleek</strong> ang kilay mo today, mi!',
   },
   OnGod: {
@@ -1473,7 +1473,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/on.gád/',
     definition: 'katulad ng “I swear” o pagtitiyak.',
     etymology: "Nagsimula ito at naging madalas itong gamitin sa African American Vernacular English (AAVE) at kumalat sa internet slang ekspresyon ng pagtitiyak o paninindigan, katulad ng 'I swear to God.'.",
-    partOfSpeech: 'pang-abay',
+    partOfSpeech: 'Pang-abay',
     example: '<strong>On God</strong>, hindi ko siya sinaktan. Promise!',
   },
   OnLock: {
@@ -1481,7 +1481,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/on.lak/',
     definition: 'secured or sure na.',
     etymology: 'Dalawang ingles na salita na nagmula sa ideya ng pagkakaroon ng kontrol o seguridad sa isang bagay. Ginagamit upang ipahiwatig na ang isang bagay ay tiyak o nasa ilalim ng kontrol.',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: 'Yung schedule ko next week, <strong>on lock</strong> na. Wala nang changes.',
   },
   OnThinIce: {
@@ -1489,7 +1489,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/on.tín.áys/',
     definition: 'warning na ‘wag nang magkamali.',
     etymology: 'Nagmula ito sa idiomatic expression na nangangahulugang nasa delikadong kalagayan o malapit nang mapahamak.',
-    partOfSpeech: 'pang-abay',
+    partOfSpeech: 'Pang-abay',
     example: "Late ka na naman? You're <strong>on thin ice</strong>, teh.",
   },
   OneSided: {
@@ -1497,7 +1497,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/wan.sáy.ded/',
     definition: 'May kinikilingan',
     etymology: 'Isang ingles na salita na may kaparehong pagpapakahulugan sa Tagalog. Tumutukoy sa isang sitwasyon kung saan ang isang panig lamang ang nagbibigay ng effort o emosyon, tulad ng sa isang relasyon.',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: "<strong>One-sided</strong> love 'to, siya lang ang masaya.",
   },
   OoNgani: {
@@ -1505,7 +1505,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: "/ó.o'.ngá.ni/",
     definition: "Ito ay isang pariralang Bisaya (mula sa rehiyon ng Visayas sa Pilipinas) na nangangahulugang 'Oo nga' o 'Talaga nga'. Ito ay isang paraan ng pagsang-ayon o pagpapatibay.",
     etymology: "Kombinasyon ng Tagalog ('oo,' ibig sabihin 'yes') at Bisaya ('ngani,' tulad ng 'nga' o 'daw').",
-    partOfSpeech: 'pandamdam',
+    partOfSpeech: 'Pandamdam',
     example: '"Ang ganda ng dress mo!"<br/>"<strong>Oo, ngani</strong>. Sale \'yan kahapon."',
   },
   Oof: {
@@ -1513,7 +1513,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/úf/',
     definition: 'expression ng sympathy or awkwardness.',
     etymology: 'Nagmula sa isang onomatopoeic expression na ginagamit upang ipahayag ang sympathy, pagkagulat, o pagkadismaya. Naging popular sa mga gaming community tulad ng Roblox.',
-    partOfSpeech: 'pandamdam',
+    partOfSpeech: 'Pandamdam',
     example: "<strong>Oof</strong>, nasira 'yung phone ko. Ang sakit!",
   },
   Oomf: {
@@ -1529,7 +1529,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/ó.pi/',
     definition: '(Overpowered) – sobrang galing o lakas.',
     etymology: 'Nagsimula ito sa isang gaming community na madalas gamitin upang ilarawan ang isang karakter o item na labis ang lakas o galing, na maaaring makasira sa balanse ng laro.',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: 'Yung bagong character sa game, <strong>OP</strong> masyado. Dapat nerf na.',
   },
   OpenUp: {
@@ -1537,7 +1537,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/ó.pen.ap/',
     definition: 'Magbahagi ng nararamdaman',
     etymology: 'Ang orihinal na kahulugan nito sa Ingles ay may kapareho ring pagpapakahulugan sa Tagalog. Ito ay phrasal verb na nangangahulugang magbahagi ng nararamdaman o personal na impormasyon.',
-    partOfSpeech: 'pandiwa',
+    partOfSpeech: 'Pandiwa',
     example: "Kung may problema ka, mag-<strong>open-up</strong> ka lang sa'kin.",
   },
   Opkors: {
@@ -1545,7 +1545,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/op.kors/',
     definition: "Balbal na paraan ng pagsasabi ng 'of course.'",
     etymology: "Isa itong balbal na paraan ng pagsasabi ng 'of course,' orihinal na salita, na binigyan ng mabulaklak o maarteng paraan ng pagsasalita na nagpapakita ng casual o comedic tone sa pakikipag-usap.",
-    partOfSpeech: 'pandamdam',
+    partOfSpeech: 'Pandamdam',
     example: '"Gusto mo ng ice cream?"<br/>"<strong>Opkors</strong>! Sino ba naman ang ayaw?"',
   },
   Opp: {
@@ -1553,7 +1553,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/op/',
     definition: 'nagmula sa salitang “opposition” na sa tagalog ay Kalaban o kaaway.',
     etymology: "Hango ito sa orihinal na Ingles na salitang 'opposition”. Madalas itong gamitin lalo na sa konteksto ng mga gang o street culture.",
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: "Ingat ka sa kanya, <strong>opp</strong> 'yan. Hindi siya totoo.",
   },
   Orb: {
@@ -1561,7 +1561,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/órb/',
     definition: "Binaliktad na salita na 'bro' o 'brother.'",
     etymology: "Hango sa binaliktad salitang 'bro' o 'brother,' na madalas ginagamit sa mga online na komunidad bilang isang term of endearment o pagtukoy sa kaibigan.",
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Nag-<strong>orb</strong> na naman si kuya, wala na sa mood makipag-usap.',
   },
   Out: {
@@ -1569,7 +1569,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/áwt/',
     definition: 'Wala na sa uso, lipas na, o hindi na relevant.',
     etymology: 'Isang ingles na salita na madalas na ginagamit upang ilarawan ang isang bagay na wala na sa uso o hindi na relevant sa kasalukuyang panahon.',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: '<strong>Out</strong> na ako sa group chat, toxic na masyado.',
   },
   OutOfPocket: {
@@ -1577,7 +1577,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/áwt.ov.pá.ket/',
     definition: 'Walang preno, bastos, o wala sa lugar ang kilos.',
     etymology: 'Isang Ingles na idiomatic expression na nangangahulugang wala sa lugar ang kilos o bastos ang asal. Naadap ito ng mga Pilipino at madalas gamitin sa kaswal na usapan dahil sa palagi itong nagagamit online.',
-    partOfSpeech: 'pang-abay',
+    partOfSpeech: 'Pang-abay',
     example: '<strong>Out of pocket</strong> \'yung joke mo, hindi na nakakatawa.',
   },
   OutOfThisWorld: {
@@ -1585,7 +1585,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/áwt.ov.dis.wérld/',
     definition: 'Sobrang ganda, kakaiba, o hindi kapani-paniwala.',
     etymology: 'Hango sa ingles na parirala na nangangahulugang sobrang ganda, kakaiba, o hindi kapani-paniwala.',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: 'Yung performance nila, <strong>out of this world</strong>! Ang galing!',
   },
   Outcast: {
@@ -1593,7 +1593,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/áwt.kast/',
     definition: 'Hindi kasali sa isang grupo',
     etymology: 'Isang wikang Ingles at tumutukoy ito sa isang tao na hindi kasali o tinatanggap sa isang grupo o lipunan.',
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Feeling ko talaga <strong>outcast</strong> ako sa klase, wala akong kaibigan kahit isa.',
   },
   Over: {
@@ -1601,7 +1601,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: "/ó.ver'/",
     definition: 'Tapos na o hindi na interesado.',
     etymology: 'Ingles na salita na madalas ginagamit upang ipahiwatig na ang isang bagay ay tapos na o wala nang interes.',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: '<strong>Over</strong> na ako sa kanya. Move on na talaga.',
   },
   Overrated: {
@@ -1609,7 +1609,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '//o.ver.réy.ted/',
     definition: 'Maraming tumatangkilik',
     etymology: 'Nagmula sa Ingles na salitang tumutukoy sa isang bagay na binibigyan ng labis na papuri o atensyon kaysa sa nararapat.',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: 'Ang <strong>overrated</strong> \'yung movie na \'yon. Hindi naman ganoon kaganda.',
   },
   Paras: {
@@ -1617,7 +1617,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/pá.ras/',
     definition: "Pinaikling bersyon ng salitang 'parasite' na nangangahulugang peste. Madalas sinasabi ito sa mga taong peste o sagabal.",
     etymology: "Hango isa Ingles na salitang 'parasite,' na tumutukoy sa isang organismo na nabubuhay sa o sa loob ng ibang organismo at kumukuha ng sustansya mula rito.",
-    partOfSpeech: 'pang-abay',
+    partOfSpeech: 'Pang-abay',
     example: "Siya 'yung <strong>paras</strong> sa group project, wala namang ambag.",
   },
   PartyPopper: {
@@ -1625,7 +1625,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/pár.ti.pó.per/',
     definition: 'Taong laging nagpapasaya',
     etymology: "Isang Ingles na salita na ang ibig sabihin ay nagmula sa maliit na paputok na ginagamit sa mga selebrasyon. Sa slang, tumutukoy sa isang taong laging nagpapasaya o nagbibigay ng kasiyahan.",
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Nagdala siya ng <strong>party popper</strong> sa birthday ko, ang saya!',
   },
   Periodt: {
@@ -1633,7 +1633,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/pí.ri.yud/',
     definition: 'Isang ekspresyon na ginagamit sa dulo ng isang pahayag upang bigyang-diin ito at maghudyat ng pagtatapos ng usapan tungkol sa paksa.',
     etymology: "Hango sa salitang Ingles na 'period,' na ginagamit upang bigyang-diin ang isang pahayag at ipahiwatig na tapos na ang usapan tungkol sa paksa. Dinagdagan ito ng letrang T sa dulo upang mas maging maarte o mapaglaro ang mga salita.",
-    partOfSpeech: 'pandamdam',
+    partOfSpeech: 'Pandamdam',
     example: 'Tama ako, <strong>periodt</strong>. Wala nang arguments.',
   },
   PetPeeve: {
@@ -1641,7 +1641,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/pét.pív/',
     definition: 'Nakaiinis na gawain, tao o ugali ng tao',
     etymology: 'Hango sa Ingles na salita at may kaparehong pagpapakahulugan na isang bagay o ugali na labis na nakakainis o nakakairita sa isang tao.',
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: '<strong>Pet peeve</strong> ko talaga \'yung nanguya nang malakas . Naiirita talaga ako',
   },
   PickMe: {
@@ -1649,7 +1649,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/pík.mi/',
     definition: 'Isang termino na ginagamit para ilarawan ang isang tao na naghahanap ng atensyon o pagpapatunay sa pamamagitan ng paggawa o pagsasabi ng mga bagay na hindi totoo sa kanilang sarili.',
     etymology: 'Orihinal na Ingles na salita na tumutukoy sa isang tao na naghahanap ng atensyon o pagpapatunay sa pamamagitan ng paggawa o pagsasabi ng mga bagay na hindi totoo sa kanilang sarili.',
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: "Siya 'yung <strong>pick me</strong> girl, yung laging nagpapapansin sa boys.",
   },
   PinkNaPink: {
@@ -1657,7 +1657,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/píngk.na.píngk/',
     definition: 'Ito ay isang paraan ng pagbibigay-diin sa kulay rosas. Ipinapahiwatig nito na ang kulay rosas ay napakatindi o kitang-kita.',
     etymology: 'Nagmula sa salitang kulay pink o kulay rosas.',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: '<strong>Pink na pink</strong> ang outfit mo today, ang cute!',
   },
   PinoyBait: {
@@ -1665,7 +1665,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/pi.nóy.béyt/',
     definition: 'Mga bagay o content na ginawa para makaakit ng atensyon ng mga Pilipino, madalas gamit ang mga karaniwang karanasan o kultura.',
     etymology: "Nagmula sa dalawang magkaibang salita na Pinoy at bait. Pinoy na may kahulugang nagmula sa Piipinas o mga tao sa Piipinas. At bait naman, na nagmula sa salitang ingles, na ang ibig sabihin ay isang patibong na pampaakit sa mga manonood.",
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: "Yung vlogger na 'yon, puro <strong>Pinoy bait</strong> lang naman yung mga content niya.",
   },
   PlotTwist: {
@@ -1681,7 +1681,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/plág/',
     definition: 'Pag-promote o pag-endorso ng isang produkto o serbisyo.',
     etymology: 'Nagsimula bilang slang sa mga African-American communities noong 2000s, tumutukoy sa taong may koneksyon sa mga mahirap hanapin na produkto, lalo na sa ilegal na droga. Kalaunan, lumawak ang kahulugan nito upang isama ang sinumang nagbibigay ng access sa mga eksklusibong item o serbisyo.',
-    partOfSpeech: 'pandiwa',
+    partOfSpeech: 'Pandiwa',
     example: 'May <strong>plug</strong> ka ba ng murang sneakers? Hanap ako eh.',
   },
   Pluh: {
@@ -1689,7 +1689,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/plá/',
     definition: 'Tapos na,” o parang “Ayoko na,” pang-end ng usapan kapag hindi kana interasado',
     etymology: 'Isang Gen Z slang na ginagamit bilang pangwakas sa usapan kapag wala nang masabi o hindi interesado. Ang eksaktong pinagmulan nito ay hindi tiyak, ngunit ito ay patuloy na lumaganap sa TikTok at iba pang social media platforms.',
-    partOfSpeech: 'pandamdam',
+    partOfSpeech: 'Pandamdam',
     example: 'Wala na akong masabi sa kanya, <strong>pluh</strong>.',
   },
   Podium: {
@@ -1697,7 +1697,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/pó.dyum/',
     definition: 'Magaling o panalo, pero hindi pinakamahusay o pinakamagaling.',
     etymology: "Nagmula sa Latin na 'podium,' mula sa Griyegong 'podion,' na nangangahulugang 'maliit na paa.' Sa modernong paggamit, ang 'podium' ay tumutukoy sa plataporma kung saan tumatayo ang mga nanalo sa kompetisyon. Ang paggamit nito bilang pandiwa ('to podium') ay nangangahulugang makamit ang isa sa mga nangungunang posisyon sa isang kompetisyon.",
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Top 3 ako sa quiz bee! Nasa <strong>podium</strong> na ako!',
   },
   PogPoggers: {
@@ -1705,7 +1705,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/póg/ /pó.gers/',
     definition: 'expression ng excitement o approval (galing sa “Play of the Game”).',
     etymology: "Nagmula sa Twitch emote na 'PogChamp,' na nagpapakita ng excitement o sorpresa. Ang 'Pog' ay pinaikling anyo ng 'Play of the Game,' na ginagamit sa gaming community upang ipakita ang kasiyahan o paghanga.",
-    partOfSpeech: 'pandamdam',
+    partOfSpeech: 'Pandamdam',
     example: 'Nanalo ako sa tournament! <strong>Poggers</strong>!',
   },
   PookieBear: {
@@ -1713,7 +1713,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/pú.ki.ber/',
     definition: 'Ito ay karaniwang isang endearment term o tawag-pansin sa isang taong mahalaga, katulad ng kasintahan o kapamilya.',
     etymology: 'Isang endearment term na nagmula sa mga German term of endearment noong 1900s. Ginagamit ito bilang tawag sa isang mahal sa buhay o malapit na kaibigan.',
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Good morning, <strong>pookie bear</strong>! Miss na kita.',
   },
   PopOff: {
@@ -1721,7 +1721,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/páp-of/',
     definition: 'gawin nang todo o mahusay.',
     etymology: 'Isang slang na nangangahulugang gumawa ng isang bagay nang mahusay o todo. Ang eksaktong pinagmulan nito ay hindi tiyak, ngunit ito ay lumaganap sa mga online communities at social media.',
-    partOfSpeech: 'pandiwa',
+    partOfSpeech: 'Pandiwa',
     example: 'Nag-<strong>pop off</strong> siya sa performance, sobrang galing!',
   },
   PositiveAura: {
@@ -1729,7 +1729,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/pó.si.tiv.áw.ra/',
     definition: 'Ito ay tumutukoy sa pagkakaroon ng positibong enerhiya o vibe at nakakahikayat na personalidad.',
     etymology: "Ang 'aura' ay tumutukoy sa enerhiya o vibe ng isang tao. Sa Gen Z at Gen Alpha, ito ay ginagamit upang ilarawan ang pagiging cool o confident ng isang tao.",
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Gusto ko kasama si Bea, parang may <strong>positive aura</strong> talaga siya.',
   },
   PotekPucha: {
@@ -1737,7 +1737,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/pó.tek/ /pú.cha/',
     definition: 'Mga ekspresyon ng pagkagulat, inis, o pagkadismaya',
     etymology: "Mga ekspresyon ng pagkagulat, inis, o pagkadismaya sa wikang Filipino. Ang 'pucha' ay pinaikling anyo ng salitang Kastila na 'puta,' na isang mura. Ang 'potek' ay isang eufemism ng 'putang ina,' na ginagamit upang maiwasan ang direktang pagmumura.",
-    partOfSpeech: 'pandamdam',
+    partOfSpeech: 'Pandamdam',
     example: "<strong>Potek</strong>, nakalimutan ko 'yung assignment ko sa bahay!",
   },
   Pov: {
@@ -1745,7 +1745,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/pi.o.ví/',
     definition: "Maikling paraan ng 'point of view,' madalas gamitin sa mga video para ipakita ang perspektibo ng isang tao sa isang sitwasyon.",
     etymology: "Acronym para sa 'Point of View.' Ginagamit sa mga video upang ipakita ang perspektibo ng isang tao sa isang sitwasyon. Nagsimula itong lumaganap ito sa mga platform tulad ng TikTok at YouTube.",
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: '<strong>POV</strong>: Late ka na naman sa klase.',
   },
   PowerHug: {
@@ -1753,7 +1753,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/pá.wer.hág/',
     definition: 'Salitang ginagamit para sa mahigpit na yakap.',
     etymology: "Isang modernong termino na tumutukoy sa mahigpit at makapangyarihang yakap. Ang 'power' ay nagpapahiwatig ng intensity ng yakap. Walang tiyak na pinagmulan, ngunit ito ay lumaganap sa mga motivational at self-help contexts.",
-    partOfSpeech: 'pandiwa',
+    partOfSpeech: 'Pandiwa',
     example: 'Mukhang malungkot ka, <strong>power hug</strong> muna tayo.',
   },
   Pressed: {
@@ -1761,7 +1761,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/prés/',
     definition: 'taong sobrang apektado o inis.',
     etymology: 'Isa itong slang na nangangahulugang sobrang apektado o inis. Ginagamit upang ilarawan ang isang taong labis na naapektuhan ng isang sitwasyon o komento.',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: '<strong>Pressed</strong> siya kasi hindi siya napili sa team.',
   },
   Pro: {
@@ -1769,7 +1769,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/pró/',
     definition: "Maikli para sa 'professional' o propesyonal.",
     etymology: "Pinaikling bersyon ng 'professional.' Ginamit na ito mula pa noong 1866 upang ilarawan ang isang taong may mataas na antas ng kasanayan o propesyonalismo.",
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: "<strong>Pro</strong> na siya sa pag-edit ng videos, ang galing!",
   },
   Psych: {
@@ -1777,7 +1777,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/sáyk/',
     definition: 'Biniro o niloko.',
     etymology: "Pinaikling bersyon ng 'psychoanalyze.' Ginamit noong 1914 bilang 'to subject to psychoanalysis,' at lumawak ang kahulugan upang isama ang 'to outsmart' o 'to unnerve.' Nangangahulugan itong 'lokohin' o 'biruin.'",
-    partOfSpeech: 'pandiwa',
+    partOfSpeech: 'Pandiwa',
     example: "Akala mo totoo? <strong>Psych</strong>! Joke lang 'yon.",
   },
   Push: {
@@ -1785,7 +1785,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/púsh/',
     definition: 'Nangangahulugang ituloy, gawin, o subukan nang husto.',
     etymology: "Nagmula sa Latin na 'pulsare,' na nangangahulugang 'itulak.' Sa slang, ito ay nangangahulugang ituloy o gawin ang isang bagay.",
-    partOfSpeech: 'pandiwa',
+    partOfSpeech: 'Pandiwa',
     example: "<strong>Push</strong> lang tayo sa goals natin, kaya natin 'to!",
   },
   Qrt: {
@@ -1793,7 +1793,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/kyu.ar.tí/',
     definition: '(Quote Retweet) – ginagamit lalo na sa Twitter/X kapag nire-reply-an ang tweet.',
     etymology: "Acronym ng 'Quote Retweet,' na ginagamit sa Twitter upang mag-reply sa isang tweet habang inu-quote ito.",
-    partOfSpeech: 'pandiwa',
+    partOfSpeech: 'Pandiwa',
     example: 'Nag-<strong>QRT</strong> siya ng tweet ko, nakakahiya!',
   },
   Quaking: {
@@ -1801,7 +1801,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/kwéy.king/',
     definition: 'sobrang gulat o kaba.',
     etymology: 'Slang na nangangahulugang sobrang gulat o kaba. Maaaring nagmula ito sa literal na pagyanig ng katawan kapag natatakot o kinakabahan.',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: '<strong>Quaking</strong> ako sa performance niya, ang lakas talaga ng impact!',
   },
   Queen: {
@@ -1809,7 +1809,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/kwín/',
     definition: 'papuri para sa mga babaeng confident o empowering.',
     etymology: 'Bukod sa orihinal nitong pagpapakahulugan sa Ingles na Queen o reyna sa tagalog. Ginagamit bilang papuri sa mga babaeng confident o empowering. Maaaring nag-ugat ito sa LGBTQ+ culture bilang term of endearment o respeto.',
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: '<strong>Queen</strong> talaga si ate, ang ganda ng aura!',
   },
   QuietFlex: {
@@ -1817,7 +1817,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/kwá.yet.fleks/',
     definition: 'pagyayabang pero subtle o classy.',
     etymology: "Slang na nangangahulugang subtle o classy na pagyayabang. Ang 'flex' ay nangangahulugang ipakita ang isang bagay, habang ang 'quiet' ay nagpapahiwatig ng pagiging hindi garapal.",
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Naks! <strong>Quiet flex</strong> lang siya sa bagong phone niya, hindi nagyayabang.',
   },
   Rank: {
@@ -1825,7 +1825,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/rángk/',
     definition: 'Posisyon o antas ng katayuan sa mga online games',
     etymology: 'Nagmula ito sa gaming community, na tumutukoy sa posisyon o antas ng katayuan ng isang manlalaro. Nagmula ito sa military ranking system.',
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Anong <strong>rank</strong> mo na sa ML? Mythic na ako!',
   },
   Ratioed: {
@@ -1833,7 +1833,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/réy.syod/',
     definition: 'kapag mas maraming reply kaysa likes sa post (usually negative response).',
     etymology: 'Nagmula ito sa social media, na tumutukoy sa isang post na may mas maraming replies kaysa likes, na karaniwang indikasyon ng negatibong pagtanggap.',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: 'Nag-post siya ng controversial na tweet, tapos na-<strong>ratioed</strong> siya.',
   },
   Rawr: {
@@ -1841,7 +1841,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/ráwr/',
     definition: 'Ginagamit bilang playful o flirtatious na ekspresyon, madalas gayahin ang tunog ng isang hayop.',
     etymology: 'Ang salitang "rawr" ay isang onomatopoeic na representasyon ng tunog ng "roar" o pag-ungol ng hayop. Naging popular ito sa mga online chat at text messaging noong huling bahagi ng 1990s at unang bahagi ng 2000s, lalo na sa mga emo at scene subcultures. Ginagamit ito bilang playful o flirtatious na ekspresyon upang ipakita ang atraksyon o kasiyahan.',
-    partOfSpeech: 'pandamdam',
+    partOfSpeech: 'Pandamdam',
     example: '<strong>Rawr</strong>! Sobrang cute mo naman ngayon.',
   },
   RdRelationshipDrama: {
@@ -1849,7 +1849,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/ar.dí/',
     definition: 'Tumutukoy sa mga problema o komplikasyon sa isang relasyon.',
     etymology: "Ang akronim na 'RD' ay pinaikling anyo ng 'Relationship Drama,' na tumutukoy sa mga komplikasyon o problema sa isang romantikong relasyon. Bagaman walang tiyak na pinagmulan, ito ay naging popular sa mga kabataan sa social media bilang mabilisang paraan ng pagtukoy sa mga isyung may kinalaman sa relasyon.",
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'May <strong>RD</strong> na naman sila, lagi na lang may away.',
   },
   RealityCheck: {
@@ -1897,7 +1897,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/ri.dyék.ted/',
     definition: 'Binalewala o nabasted',
     etymology: "Nagmula sa Latin na 'rejectus,' na nangangahulugang 'itinaboy' o 'tinanggihan.' Sa modernong slang, ito ay tumutukoy sa pagtanggi, lalo na sa konteksto ng romantikong interes o aplikasyon.",
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: 'Nag-DM siya tapos hindi sinagot? <strong>Rejected</strong>, baks. Move on na.',
   },
   RentFree: {
@@ -1905,7 +1905,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/rént.frí/',
     definition: 'Tumutukoy sa isang bagay o taong patuloy na nasa isip mo kahit hindi mo gusto.',
     etymology: "Ang pariralang ito ay unang ginamit ni Eppie Lederer (Ann Landers) noong 1990s, na nagsabing 'Hanging onto resentment is letting someone you despise live rent-free in your head.' Ito ay naging popular sa internet noong 2018, na ginagamit upang ilarawan ang isang bagay o taong patuloy na nasa isip ng isang tao kahit hindi nila gusto.",
-    partOfSpeech: 'pang-abay',
+    partOfSpeech: 'Pang-abay',
     example: 'Yung sinabi niya last week? Still living <strong>rent free</strong> sa utak ko hanggang ngayon.',
   },
   Resibo: {
@@ -1929,7 +1929,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/rét.sam/',
     definition: "Ito ay ang salitang 'master' na binaybay nang paurong. Maaaring gamitin ito sa isang mapaglarong o ironikong paraan.",
     etymology: "Isang halimbawa ng backslang, kung saan ang salitang 'master' ay binaybay nang paurong. Ginamit ito noong huling bahagi ng ika-19 na siglo sa mga informal na usapan, lalo na sa mga tindahan, upang palihim na tukuyin ang 'boss' o 'manager.",
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Si kuya sobrang galing sa ML, parang <strong>retsam</strong> na ng buong barangay.',
   },
   RideOrDie: {
@@ -1945,7 +1945,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/rígd/',
     definition: 'Hindi patas o may dayaan.',
     etymology: 'Galing sa salitang Ingles na “to rig,” na ibig sabihin ay mandaya o manipulahin para mapaboran ang isang panig.',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: 'Pakiramdam ko ay <strong>rigged</strong> ang paligsahan kaya hindi patas ang resulta.',
   },
   Rizz: {
@@ -1977,7 +1977,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/rán/',
     definition: 'Tumakas',
     etymology: "Nagmula ito sa meme na may background na salitang 'run' na ang ibig sabihin ay takbo o tumakas. Nauso ito dahil may sound effects itong parang hinahabol na karaniwang ginagamit sa mga bidyo na nakakatawa (meme)",
-    partOfSpeech: 'pandiwa',
+    partOfSpeech: 'Pandiwa',
     example: 'Tara, <strong>run</strong> tayo sa tindahan bago magsara.',
   },
   Rush: {
@@ -1985,7 +1985,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/rásh/',
     definition: 'Nagmamadali',
     etymology: 'Ingles na slang na ibig sabihin ay pagmamadali.',
-    partOfSpeech: 'pandiwa',
+    partOfSpeech: 'Pandiwa',
     example: 'Huwag mong i-<strong>rush</strong> ang desisyon mo, mag-isip ka muna nang mabuti.',
   },
   Salty: {
@@ -2001,7 +2001,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/sá.beyg/',
     definition: 'Matapang o walang takot',
     etymology: 'Slang na nangangahulugang matapang, walang pakundangan, o matalim ang salita.',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: 'Grabe! ang <strong>savage</strong> talaga nya maglaro.',
   },
   SecureTheBag: {
@@ -2009,7 +2009,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/sek.yúr. da. baĝ/',
     definition: 'Nakuha o nakamit ang isang inaasam na bagay',
     etymology: 'Parirala sa slang na nangangahulugang kumita ng pera o makuha ang mahalagang bagay.',
-    partOfSpeech: 'parirala',
+    partOfSpeech: 'Parirala',
     example: 'Ginawa niya ang lahat para ma-<strong>secure ang bag</strong> sa kanyang negosyo.',
   },
   Shade: {
@@ -2049,7 +2049,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/sháwt.awt̂/',
     definition: 'Paghingi ng pagbati mula sa isang tao o pagtawag ng pansin',
     etymology: 'Salitang Ingles na ibig sabihin ay pasasalamat o pagbibigay ng pagkilala sa isang tao o grupo.',
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: '<strong>Shoutout</strong> sa lahat ng tumulong sa event!',
   },
   Sigma: {
@@ -2057,7 +2057,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/síg.ma/',
     definition: 'Yung tipong alpha vibes pero chill—hindi kailangan ng validation, pero lahat nakatingin sa kanya. Astig, leader-type, sariling diskarte.',
     etymology: 'Mula sa konsepto ng “Sigma male,” isang taong independent at hindi sumusunod sa mga social norms, naging meme sa internet.',
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: '<strong>Sigma</strong> siya dahil ayaw niyang makisawsaw sa chismis.',
   },
   Simp: {
@@ -2081,7 +2081,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/is.kí.bi.di/',
     definition: "Ang 'Skibidi' ay nangangahulugang good, bad, cool, at nagmula sa sikat na YouTube series na tinatawag na 'Skibidi Toilet' na ginawa ng animator na si Alexey Gerasimov. Karamihan sa mga video ay nagpapakita ng mga inidoro na may ulo ng mga matatandang lalaki na umiikot at nagsasalita habang kumakanta ng mga kanta.",
     etymology: 'Nagmula sa kantang "Skibidi" ng Russian band na Little Big. Naging viral dahil sa kakaibang sayaw at muling sumikat sa TikTok at YouTube Shorts.',
-    partOfSpeech: 'pandiwa',
+    partOfSpeech: 'Pandiwa',
     example: 'Nag-<strong>skibidi</strong> dance pa siya sa harap ng crush niya, tapos nagtawanan lahat!',
   },
   SkibidiOhioRizz: {
@@ -2097,7 +2097,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/ is.kí.bi.di. rís/',
     definition: "Yung pa-charming moves ng lalaking Skibidi Toilet para mapansin siya ng babaeng Skibidi Toilet—classic Skibidi riz . Galing 'to sa viral animated series na 'Skibidi Toilet' sa YouTube.",
     etymology: 'Kombinasyon ng Skibidi at Rizz; mas exaggerated o OA na charm.',
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: '<strong>Skibidi Rizz</strong> ang gamit mo? Grabe ka naman magpakilig.',
   },
   SkibidiToilet: {
@@ -2105,7 +2105,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/is.kí.bi.di. tóy.let/',
     definition: 'Isa itong YT series at dito nagmula ang salitang “skibidi”',
     etymology: 'Galing sa YouTube Shorts series na nagpapakita ng mga toilets na may ulo na kumakanta ng “Skibidi.” Absurd at katawa-tawang konsepto.',
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Yung pinsan ko, buong araw nanonood ng <strong>Skibidi Toilet</strong>, parang na-hypnotize na.',
   },
   Skrtt: {
@@ -2113,7 +2113,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/is.kért/',
     definition: 'Pagpapakit ng angas',
     etymology: 'Tunog ng gulong na nagpepreno. Gamit sa hip-hop para ipakita ang bilis o pagka-cool.',
-    partOfSpeech: 'pandiwa',
+    partOfSpeech: 'Pandiwa',
     example: 'Nag-<strong>skrtt</strong> palabas ng GC, wala man lang paalam.',
   },
   Sksksk: {
@@ -2137,7 +2137,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/is.léy/',
     definition: 'Nagmula sa salitang “Slayable". Ito ang pinaikling paraan ng pagsasabi na magaling o kahanga-hanga ang ginawa ng isang tao. Ginagamit ito kapag may isang taong sobrang galing o bumida sa isang bagay.',
     etymology: 'Dati nangangahulugang “pumatay”; ngayon ibig sabihin ay “nagpakitang gilas” o “nagstand-out.”',
-    partOfSpeech: 'pandiwa',
+    partOfSpeech: 'Pandiwa',
     example: '<strong>Slay</strong> ka today, sis! Laban na laban ang outfit mo!”',
   },
   Slayable: {
@@ -2145,7 +2145,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/ is.léya.bol/',
     definition: 'Dito hinango ang slang word na “slay” na nangangahulugang paraan ng pagsasabi na magaling o kahanga-hanga ang ginawa ng isang tao. Ginagamit ito kapag may isang taong sobrang galing o bumida sa isang bagay.',
     etymology: 'Nagmula sa salitang “slay,” ginagamit para ilarawan ang bagay o tao na sobrang ganda o astig.',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: 'Ang ganda ng ayos niya, <strong>slayable</strong> talaga!',
   },
   Sleeper: {
@@ -2153,7 +2153,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/is.lí.per/',
     definition: 'Hindi inaasahang magaling pala o tinatawag na underrated na sitwasyon, tao, o karanasan',
     etymology: 'Nagmula sa “sleeper hit,” isang bagay na hindi inaasahan pero sobrang galing.',
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Di ko inakalang ang ganda ng pelikulang ‘yon—total <strong>sleeper</strong>!',
   },
   Snack: {
@@ -2161,7 +2161,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/is.nák/',
     definition: 'tawag sa gwapo o maganda',
     etymology: 'Nagmula sa English slang na “snack”, ibig sabihin ay taong mukhang masarap tignan o aesthetic, parang pagkain.',
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'OMG, ang pogi niya—literal na <strong>snack</strong>!',
   },
   SnatchedSnatchedMyWig: {
@@ -2169,7 +2169,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/is.natch may wig/',
     definition: 'Napakaganda o napakagwapo at sobrang astig ng dating',
     etymology: '“Snatched” ibig sabihin ay perfect na look; “snatched my wig” ay reaksyon ng sobrang gulat o paghanga. Galing sa drag culture.',
-    partOfSpeech: 'parirala',
+    partOfSpeech: 'Parirala',
     example: '<strong>Snatched</strong> ang makeup niya—parang artista!” / “Ang performance niya? Wig <strong>snatched</strong>!',
   },
   Snitch: {
@@ -2193,7 +2193,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/sób.rang sa.ráp/',
     definition: 'Isang papuri sa isang tao dahil sobrang ganda ng hitsura o aura niya.',
     etymology: 'Literal na Tagalog phrase pero ginagamit ngayon in a thirsty or flirtatious context.',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: '<strong>Sobrang sarap</strong> mo naman kanina, talaga ng ginalingan ang pag-rampa.',
   },
   SobrangSikipShikip: {
@@ -2201,7 +2201,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/ sób.rang. si.kíp/',
     definition: 'Isang papuri sa isang tao dahil sobrang ganda niya o dahil ginalingan niya.',
     etymology: 'Galing sa salitang “sikip,” binigkas nang exaggerated. Karaniwang may double meaning (either literal or flirtatious).',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: '<strong>Sobrang shikip</strong> ni Fyang kanina, sobrang ganda at puti.',
   },
   Solid: {
@@ -2209,7 +2209,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/só.lid/',
     definition: 'Napakaganda o mataas ang kalidad, sobrang galing, sobrang angas, sobrang pulido',
     etymology: 'Filipino slang na ibig sabihin ay “astig,” “matatag,” o “hindi matitinag.”',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: '<strong>Solid</strong> ‘yung barkada namin—walang iwanan.',
   },
   Sped: {
@@ -2217,7 +2217,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/is.ped/',
     definition: 'Tawag sa taong bobo o hindi marunong',
     etymology: 'Pinaikli para sa “special ed,” ginagamit sa panlalait noon. Ngayon ay kinokonsidera nang offensive.',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: 'Wag mong sabihin ‘yon, medyo <strong>sped</strong> na ang dating.',
   },
   'Star-star': {
@@ -2241,7 +2241,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/sus/',
     definition: 'Nagmula sa orihinal na salitang suspicious.Nangangahulugang kahina-hinala o kaduda-duda',
     etymology: 'Pinaikli para sa “suspicious”; sumikat dahil sa Among Us game.',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: 'Bakit ka pa nagtatago? <strong>Sus</strong> na ‘yan!',
   },
   Tea: {
@@ -2257,7 +2257,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/te.luk/',
     definition: 'Binaliktad na salitang “kulet” na ang ibig sabihin ay makulit',
     etymology: "Mula sa salitang 'kulit' na pinalitan ang letrang I ng E at binaliktad ang salita",
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: 'Kawawa yung bata kanina, nadapa ang <strong>teluk</strong> kasi.',
   },
   ThirstTrap: {
@@ -2281,7 +2281,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/to.má. to.má/',
     definition: 'isang aksyon na sinayaw ng isang ML player',
     etymology: 'Nagmula sa mga online games gaya ng ML',
-    partOfSpeech: 'pandiwa',
+    partOfSpeech: 'Pandiwa',
     example: 'Naka-10 kills ako tapos 0 deaths siya. <strong>TOMA TOMA</strong>!',
   },
   TralaleroTralala: {
@@ -2361,7 +2361,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/dó.bol.yu/',
     definition: '(in capital letter) means winning',
     etymology: 'Pinaikli para sa “win” o tagumpay. Madalas gamitin sa social media.',
-    partOfSpeech: 'pangngalan',
+    partOfSpeech: 'Pangngalan',
     example: 'Nag-top ako sa quiz? <strong>W</strong> na <strong>W</strong>!”',
   },
   WakeyWakey: {
@@ -2385,7 +2385,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/wáy. sow. sír.yus',
     definition: "Pabirong paraan ng pagsasabi na, 'Bro, relax lang… huwag mo masyadong seryosohin.",
     etymology: 'Galing sa linyang binitiwan ni Joker sa The Dark Knight (2008). Ginagamit ngayon para i-mock o i-call out ang mga taong too serious or dramatic.',
-    partOfSpeech: 'parirala',
+    partOfSpeech: 'Parirala',
     example: '<strong>Why so serious</strong> bro, chill lang tayo.',
   },
   WiWiWiCat: {
@@ -2409,7 +2409,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/ wók/',
     definition: 'Gising sa katotohanan o may malasakit sa lipunan o realidad.',
     etymology: 'African-American Vernacular English (AAVE); dating ibig sabihin ay "socially aware."',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: 'Hindi ka lang aware, <strong>woke na woke</strong> ka!',
   },
   WompWomp: {
@@ -2425,7 +2425,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/yap /ya.ping/',
     definition: 'madaldal, maingay, nagkukwento',
     etymology: 'Mula sa tunog ng tahol ng aso; ginagamit sa taong madaldal o makulit.',
-    partOfSpeech: 'pandiwa',
+    partOfSpeech: 'Pandiwa',
     example: 'Tumigil ka na sa ka-<strong>yap</strong>, nakaka-stress ka na.',
   },
   Yarn: {
@@ -2449,7 +2449,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/yá.si.pay/',
     definition: "pagpapaganda nang todo, madalas gumamit ng iba't ibang filter o edit.",
     etymology: 'Galing sa salitang “Yas!” (expression of approval), at naging meme noong 2021 kung saan ang mga larawan ay pino-Photoshop para magmukhang glamorosa o overly beautified.',
-    partOfSpeech: 'pandiwa',
+    partOfSpeech: 'Pandiwa',
     example: 'Na-<strong>yassify</strong> ko ‘yung profile pic ko kagabi, mukha na akong beauty queen!',
   },
   YeetYit: {
@@ -2497,7 +2497,7 @@ export const detailedWordData: Record<string, WordDetails> = {
     pronunciation: '/zés.ti/',
     definition: "Salitang ginagamit para ilarawan ang tao (kadalasan ay mga lalaki)kapag medyo malambot ang galaw, parang sassy, o masyadong expressive. Minsan, may 'pa-bading' energy—pero hindi laging literal, kadalasan biro lang o term of endearment.",
     etymology: 'Dating literal na ibig sabihing “maanghang” o “malasa,” pero naging coded term sa queer/meme culture para ilarawan ang flamboyant o expressive na kilos ng isang lalaki.',
-    partOfSpeech: 'pang-uri',
+    partOfSpeech: 'Pang-uri',
     example: 'Ang <strong>zesty</strong> niya sumayaw, parang ang lively at confident talaga!',
   },
 };

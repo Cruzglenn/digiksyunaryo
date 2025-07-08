@@ -13,6 +13,31 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { dictionaryWords, detailedWordData } from "@/data/dictionary";
 import { expandSearchTerm } from "@/data/wordRelationships";
 
+// Helper function to get word details with robust key matching
+const getWordDetailsRobust = (word: string) => {
+  // First try exact match (case-insensitive)
+  let wordKey = Object.keys(detailedWordData).find(
+    key => key.toLowerCase() === word.toLowerCase()
+  );
+
+  // If no exact match, try normalized matching (remove spaces and special chars)
+  if (!wordKey) {
+    const normalizedWord = word.toLowerCase().replace(/[\s-]/g, '');
+    wordKey = Object.keys(detailedWordData).find(
+      key => key.toLowerCase().replace(/[\s-]/g, '') === normalizedWord
+    );
+  }
+
+  // If still no match, try matching by the actual word property in the details
+  if (!wordKey) {
+    wordKey = Object.keys(detailedWordData).find(
+      key => detailedWordData[key].word.toLowerCase() === word.toLowerCase()
+    );
+  }
+
+  return wordKey ? detailedWordData[wordKey] : null;
+};
+
 interface SearchBarProps {
   className?: string;
   initialQuery?: string;
@@ -51,19 +76,19 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
     if (initialQuery && initialQuery !== query) {
       setQuery(initialQuery);
       if (initialQuery) {
-        const wordKey = initialQuery.toLowerCase();
-        const matchingWord = Object.keys(detailedWordData).find(
-          key => key.toLowerCase() === wordKey
-        );
+    const normalizedInitialQuery = initialQuery.toLowerCase().replace(/\s/g, ''); // Normalize for lookup
+    const matchingWord = Object.keys(detailedWordData).find(
+      key => key.toLowerCase().replace(/\s/g, '') === normalizedInitialQuery
+    );
 
-        if (matchingWord) {
-          setSelectedWord(matchingWord);
-          setDialogOpen(viewMode === "popup");
-          setPopoverOpen(viewMode === "mini");
-          recordSearch(matchingWord);
-          const updated = getPopularSearches(5);
-          setPopularSearches(updated);
-        }
+    if (matchingWord) {
+      setSelectedWord(matchingWord); // Use the exact key from detailedWordData
+      setDialogOpen(viewMode === "popup");
+      setPopoverOpen(viewMode === "mini");
+      recordSearch(matchingWord);
+      const updated = getPopularSearches(5);
+      setPopularSearches(updated);
+    }
       }
     }
   }, [initialQuery]);
@@ -135,7 +160,7 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
 
       if (activeFilters.partOfSpeech) {
         filteredWords = filteredWords.filter(word => {
-          const detailedData = detailedWordData[word.word];
+          const detailedData = getWordDetailsRobust(word.word);
           return detailedData?.partOfSpeech === activeFilters.partOfSpeech;
         });
       }
@@ -157,33 +182,44 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
 
     if (query.trim().length < 2) return;
 
-    const wordKey = query.trim().toLowerCase();
+    const normalizedQuery = query.trim().toLowerCase().replace(/\s/g, '');
 
-    let matchingWord = Object.keys(detailedWordData).find(
-      key => key.toLowerCase() === wordKey
+    let matchingWordKey: string | undefined;
+
+    // Try exact match first (normalized)
+    matchingWordKey = Object.keys(detailedWordData).find(
+      key => key.toLowerCase().replace(/\s/g, '') === normalizedQuery
     );
 
-    if (!matchingWord) {
-      const expandedTerms = expandSearchTerm(wordKey);
+    // If no exact normalized match, try expanded terms
+    if (!matchingWordKey) {
+      const expandedTerms = expandSearchTerm(query.trim()); // Use original query for expandSearchTerm
       if (expandedTerms.length > 0) {
-        matchingWord = expandedTerms[0];
-      } else {
-        const fuzzyResults = fuse.search(wordKey);
-        if (fuzzyResults.length > 0) {
-          matchingWord = fuzzyResults[0].item.word;
-        }
+        // Prioritize exact matches from expanded terms if available
+        matchingWordKey = expandedTerms.find(term => term.toLowerCase().replace(/\s/g, '') === normalizedQuery) || expandedTerms[0];
       }
     }
 
-    if (matchingWord) {
-      setSelectedWord(matchingWord);
+    // If still no match, try fuzzy search
+    if (!matchingWordKey) {
+      const fuzzyResults = fuse.search(query.trim());
+      if (fuzzyResults.length > 0) {
+        matchingWordKey = fuzzyResults[0].item.word;
+      }
+    }
+
+    if (matchingWordKey && detailedWordData[matchingWordKey]) {
+      setSelectedWord(matchingWordKey); // Use the exact key from detailedWordData
       setDialogOpen(viewMode === "popup");
       setPopoverOpen(viewMode === "mini");
-      recordSearch(matchingWord);
+      recordSearch(matchingWordKey);
       const updated = getPopularSearches(5);
       setPopularSearches(updated);
     } else {
-      console.log("No matching word found for:", wordKey);
+      console.log("No matching word found for:", query.trim());
+      setSelectedWord(null); // Clear selected word if no match
+      setDialogOpen(false);
+      setPopoverOpen(false);
     }
   };
 
@@ -192,18 +228,23 @@ const SearchBar = ({ className, initialQuery = "" }: SearchBarProps) => {
     setIsFocused(false);
     setSuggestions([]);
     
-    const wordKey = word.toLowerCase();
-    const matchingWord = Object.keys(detailedWordData).find(
-      key => key.toLowerCase() === wordKey
+    // Find the exact key from detailedWordData based on the suggested word
+    const matchingWordKey = Object.keys(detailedWordData).find(
+      key => key.toLowerCase().replace(/\s/g, '') === word.toLowerCase().replace(/\s/g, '')
     );
     
-    if (matchingWord) {
-      setSelectedWord(matchingWord);
+    if (matchingWordKey && detailedWordData[matchingWordKey]) {
+      setSelectedWord(matchingWordKey); // Use the exact key from detailedWordData
       setDialogOpen(viewMode === "popup");
       setPopoverOpen(viewMode === "mini");
-      recordSearch(matchingWord);
+      recordSearch(matchingWordKey);
       const updated = getPopularSearches(5);
       setPopularSearches(updated);
+    } else {
+      console.log("No matching word found for suggestion:", word);
+      setSelectedWord(null); // Clear selected word if no match
+      setDialogOpen(false);
+      setPopoverOpen(false);
     }
   };
 

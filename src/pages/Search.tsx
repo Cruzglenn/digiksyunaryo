@@ -48,7 +48,12 @@ const SearchPage = () => {
   
   // Get all available parts of speech from the dictionary for filters
   const [partsOfSpeech, setPartsOfSpeech] = useState<string[]>([]);
-  
+
+  // Sync query state with URL parameter
+  useEffect(() => {
+    setQuery(queryParam);
+  }, [queryParam]);
+
   useEffect(() => {
     if (!isLoading) {
       // Collect all parts of speech from the dictionary
@@ -74,12 +79,12 @@ const SearchPage = () => {
     }
   }, [isLoading, dictionarySize]);
   
-  // Perform search when query changes
+  // Perform search when query or filters change
   useEffect(() => {
-    if (queryParam) {
+    if (query.trim()) {
       handleSearch();
     }
-  }, [queryParam, filters]);
+  }, [query, filters]);
   
   const handleSearch = () => {
     if (!query.trim()) {

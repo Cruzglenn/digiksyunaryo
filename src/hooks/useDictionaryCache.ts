@@ -93,21 +93,37 @@ export function useDictionaryCache() {
   // Get a word's details with access tracking
   const getWordDetails = (word: string) => {
     if (!globalCache.initialized) return null;
-    
-    const wordKey = Object.keys(globalCache.details).find(
+
+    // First try exact match (case-insensitive)
+    let wordKey = Object.keys(globalCache.details).find(
       key => key.toLowerCase() === word.toLowerCase()
     );
-    
+
+    // If no exact match, try normalized matching (remove spaces and special chars)
+    if (!wordKey) {
+      const normalizedWord = word.toLowerCase().replace(/[\s-]/g, '');
+      wordKey = Object.keys(globalCache.details).find(
+        key => key.toLowerCase().replace(/[\s-]/g, '') === normalizedWord
+      );
+    }
+
+    // If still no match, try matching by the actual word property in the details
+    if (!wordKey) {
+      wordKey = Object.keys(globalCache.details).find(
+        key => globalCache.details[key].word.toLowerCase() === word.toLowerCase()
+      );
+    }
+
     if (wordKey) {
       // Update last accessed time
       globalCache.lastAccessed[wordKey] = Date.now();
-      
+
       // Throttled save to not overwhelm localStorage
       setTimeout(saveCache, 5000);
-      
+
       return globalCache.details[wordKey];
     }
-    
+
     return null;
   };
   
