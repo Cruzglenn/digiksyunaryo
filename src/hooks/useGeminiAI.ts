@@ -2,14 +2,13 @@ import { useState, useEffect, useCallback } from "react";
 import { expandSearchTerm, wordRelationships } from "@/data/wordRelationships"; // Assuming wordRelationships.ts is in @/data
 import { detailedWordData } from "@/data/dictionary"; // Assuming dictionary.ts is in @/data
 
-// Using environment variables without fallback values
-const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
-const GEMINI_MODEL = import.meta.env.VITE_GEMINI_MODEL || "gemini-2.0-flash-lite"; // Updated to latest flash model
+// Configuration for secure API endpoint
+const API_ENDPOINT = '/api/ai-explanation';
 const MAX_RETRIES = 3;
 const RETRY_DELAY = 1000; // 1 second
 const CACHE_EXPIRY = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
 const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
-const MAX_REQUESTS_PER_WINDOW = 10; // Adjusted for typical free tier limits
+const MAX_REQUESTS_PER_WINDOW = 10; // Client-side rate limiting (server also has its own)
 
 interface GeminiAIResponse {
   data: string;
@@ -25,6 +24,25 @@ interface CacheEntry {
 interface RateLimitEntry {
   count: number;
   timestamp: number;
+}
+
+interface AIRequest {
+  word: string;
+  definition: string;
+  etymology: string;
+  partOfSpeech: string;
+  example: string;
+  synonymGuidanceContext?: string;
+  relatedWordsContext?: string;
+  relatedDictionaryContext?: string;
+}
+
+interface APIResponse {
+  success: boolean;
+  data?: string;
+  word?: string;
+  error?: string;
+  message?: string;
 }
 
 export function useGeminiAI() {
@@ -89,9 +107,8 @@ export function useGeminiAI() {
   const retryRequest = useCallback(async (fn: () => Promise<Response>, retries = MAX_RETRIES): Promise<Response> => {
     try {
       const response = await fn();
-      // Gemini API might return 200 OK even for some errors in the content (e.g., safety blocks)
-      // but for network/server errors, this retry will help.
-      if (!response.ok && response.status >= 500 && retries > 0) { // Only retry on server errors
+      // Only retry on server errors (5xx) or network issues
+      if (!response.ok && response.status >= 500 && retries > 0) {
         console.warn(`Request failed with status ${response.status}. Retrying... (${MAX_RETRIES - retries + 1}/${MAX_RETRIES})`);
         await new Promise(resolve => setTimeout(resolve, RETRY_DELAY * (MAX_RETRIES - retries + 1))); // Exponential backoff
         return retryRequest(fn, retries - 1);
@@ -223,13 +240,7 @@ export function useGeminiAI() {
         };
       }
 
-      if (!GEMINI_API_KEY) {
-        return {
-            ...initialState,
-            loading: false,
-            error: "Hindi naka-configure ang API key. Pakitingnan ang iyong environment variables."
-        }
-      }
+      // No need to check for API key since it's handled server-side
 
       const preDefinedAlternatives = wordRelationships[word] ? wordRelationships[word].alternatives : [];
       const synonymGuidanceContext = preDefinedAlternatives.length > 0
@@ -321,96 +332,54 @@ export function useGeminiAI() {
         (iyong karagdagang impormasyon)
       `;
 
-      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
-      const url = new URL(endpoint);
-      url.searchParams.append("key", GEMINI_API_KEY);
+      // Prepare request data for our secure API endpoint
+      const requestData: AIRequest = {
+        word,
+        definition,
+        etymology,
+        partOfSpeech,
+        example,
+        synonymGuidanceContext,
+        relatedWordsContext,
+        relatedDictionaryContext
+      };
 
       const fetchResponse = await retryRequest(async () => {
-        return fetch(url.toString(), {
+        return fetch(API_ENDPOINT, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            contents: [
-              {
-                parts: [
-                  {
-                    text: prompt
-                  }
-                ]
-              }
-            ],
-            generationConfig: {
-              temperature: 0.25, // Slightly higher than 0.2 for a bit more natural language but still conservative
-              topP: 0.9,
-              topK: 40,
-              // maxOutputTokens: 512 // Consider adding if responses are too long or getting truncated
-            },
-            // === SAFETY SETTINGS ===
-            // Mahalaga ito para maiwasan ang mga bastos o hindi angkop na sagot, lalo na sa mga sensitibong salita.
-            // I-adjust ang threshold kung kinakailangan. BLOCK_MEDIUM_AND_ABOVE or BLOCK_LOW_AND_ABOVE for stricter.
-            safetySettings: [
-              {
-                category: "HARM_CATEGORY_HARASSMENT",
-                threshold: "BLOCK_MEDIUM_AND_ABOVE",
-              },
-              {
-                category: "HARM_CATEGORY_HATE_SPEECH",
-                threshold: "BLOCK_MEDIUM_AND_ABOVE",
-              },
-              {
-                category: "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-                threshold: "BLOCK_MEDIUM_AND_ABOVE", // Para sa mga salitang tulad ng 'Bembang', ito ay mahalaga
-              },
-              {
-                category: "HARM_CATEGORY_DANGEROUS_CONTENT",
-                threshold: "BLOCK_MEDIUM_AND_ABOVE",
-              },
-            ],
-            // =======================
-          })
+          body: JSON.stringify(requestData)
         });
       });
 
       if (!fetchResponse.ok) {
-        // Attempt to parse error from Gemini API response body
+        // Handle API errors from our secure endpoint
         let errorBody = "Unknown API error";
         try {
-            const errorJson = await fetchResponse.json();
-            errorBody = errorJson.error?.message || JSON.stringify(errorJson);
+            const errorJson: APIResponse = await fetchResponse.json();
+            errorBody = errorJson.message || errorJson.error || JSON.stringify(errorJson);
         } catch (e) {
             errorBody = await fetchResponse.text();
         }
         throw new Error(`API error: ${fetchResponse.status} - ${errorBody}`);
       }
 
-      const result = await fetchResponse.json();
+      const result: APIResponse = await fetchResponse.json();
 
-      // Check for content filtering or other issues from Gemini
-      if (!result.candidates || result.candidates.length === 0) {
-        let blockReason = "Hindi nakabuo ng sagot ang AI.";
-        if (result.promptFeedback?.blockReason) {
-            blockReason = `Hindi nakabuo ng sagot ang AI dahil sa: ${result.promptFeedback.blockReason}.`;
-            if (result.promptFeedback.safetyRatings) {
-                blockReason += ` Safety Ratings: ${JSON.stringify(result.promptFeedback.safetyRatings)}`;
-            }
-        } else if (result.candidates && result.candidates[0]?.finishReason && result.candidates[0].finishReason !== "STOP") {
-            blockReason = `Hindi nakabuo ng kumpletong sagot ang AI. Dahilan: ${result.candidates[0].finishReason}.`;
-             if (result.candidates[0].safetyRatings) {
-                blockReason += ` Safety Ratings: ${JSON.stringify(result.candidates[0].safetyRatings)}`;
-            }
-        }
-        console.warn(`AI Response Issue for "${word}": ${blockReason}`);
-        throw new Error(blockReason);
+      // Check if our API returned an error
+      if (!result.success || !result.data) {
+        const errorMessage = result.message || result.error || "Hindi nakabuo ng sagot ang AI.";
+        console.warn(`AI Response Issue for "${word}": ${errorMessage}`);
+        throw new Error(errorMessage);
       }
 
-
-      const generatedText = result.candidates[0]?.content?.parts?.[0]?.text?.trim() || "";
+      const generatedText = result.data.trim();
 
       if (generatedText === "") {
         console.warn(`AI response for "${word}" was empty.`);
-         throw new Error("Nakabuo ng blankong sagot ang AI.");
+        throw new Error("Nakabuo ng blankong sagot ang AI.");
       }
       
       const isValid = validateAIResponse(generatedText, word);

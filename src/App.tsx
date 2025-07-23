@@ -12,14 +12,16 @@
  */
 
 import { Toaster } from "@/components/ui/toaster";
-import { Analytics } from "@vercel/analytics/react";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation, createBrowserRouter, RouterProvider } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect, Suspense, lazy } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { BookmarkProvider } from "./context/BookmarkContext";
+
+// Lazy load Analytics to reduce initial bundle size
+const Analytics = lazy(() => import("@vercel/analytics/react").then(module => ({ default: module.Analytics })));
 
 // Lazy load page components
 const Index = lazy(() => import("./pages/Index"));
@@ -133,7 +135,9 @@ const App = () => (
       <BookmarkProvider>
         <Toaster />
         <Sonner />
-<Analytics />
+        <Suspense fallback={null}>
+          <Analytics />
+        </Suspense>
         <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
           <ScrollToTop />
           <AnimatedRoutes />

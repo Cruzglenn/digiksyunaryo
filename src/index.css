@@ -4,6 +4,102 @@
 @tailwind components;
 @tailwind utilities;
 
+/* reCAPTCHA Simple Styling */
+.recaptcha-wrapper {
+  @apply flex justify-center items-center;
+}
+
+/* Form spacing improvements */
+.feedback-form .form-section {
+  @apply mb-8;
+  position: relative;
+}
+
+.feedback-form .form-section:last-child {
+  @apply mb-0;
+}
+
+/* Add subtle section dividers */
+.feedback-form .form-section:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
+}
+
+
+
+/* Shake animation for errors */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+  20%, 40%, 60%, 80% { transform: translateX(2px); }
+}
+
+/* Enhanced form field focus states */
+.feedback-form .form-control:focus {
+  border-color: #8B0000;
+  box-shadow: 0 0 0 0.2rem rgba(139, 0, 0, 0.25);
+}
+
+/* Improved button styling */
+.feedback-form .btn-primary {
+  background: linear-gradient(135deg, #8B0000, #A52A2A);
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.feedback-form .btn-primary:hover {
+  background: linear-gradient(135deg, #A52A2A, #8B0000);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(139, 0, 0, 0.3);
+}
+
+.feedback-form .btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Form validation styling improvements */
+.feedback-form .is-invalid {
+  border-color: #dc3545;
+  animation: shake 0.3s ease-in-out;
+}
+
+.feedback-form .invalid-feedback {
+  @apply text-sm mt-1;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* reCAPTCHA error message styling */
+.recaptcha-error-message {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(239, 68, 68, 0.1);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.feedback-form [data-slot="message"] {
+  @apply text-center text-red-600 text-xs mt-2 font-medium;
+  background-color: rgba(239, 68, 68, 0.1);
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  animation: fadeIn 0.3s ease-in-out;
+  max-width: 300px;
+  margin: 8px auto 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 @layer base {
   :root {
     --background: 210 50% 98%;

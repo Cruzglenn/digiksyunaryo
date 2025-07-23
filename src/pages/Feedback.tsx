@@ -3,11 +3,12 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useState } from "react";
+import { Recaptcha, RecaptchaRef } from "@/components/ui/recaptcha";
+import { useState, useRef } from "react";
 import { toast } from "sonner";
 import emailjs from '@emailjs/browser';
 import { motion } from "framer-motion";
-import { 
+import {
   Form,
   FormControl,
   FormField,
@@ -19,15 +20,33 @@ import {
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { MessageSquare, Send, Mail, User, BookOpen } from "lucide-react"; // Removed HelpCircle
+import { MessageSquare, Send, Mail, User, BookOpen } from "lucide-react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-// Removed Tabs, TabsContent, TabsList, TabsTrigger imports
+import { getSiteKey } from "@/services/RecaptchaService";
 
 const feedbackSchema = z.object({
-  email: z.string().email("Mangyaring maglagay ng wastong email address"),
-  pangalan: z.string().min(2, "Mangyaring maglagay ng pangalan"),
-  lebel: z.string().min(2, "Mangyaring maglagay ng iyong kurso o lebel"),
-  mungkahi: z.string().min(10, "Mangyaring maglagay ng iyong puna o mungkahi")
+  email: z
+    .string()
+    .min(1, "Email address ay kinakailangan")
+    .email("Mangyaring maglagay ng wastong email address")
+    .max(254, "Email address ay masyadong mahaba"),
+  pangalan: z
+    .string()
+    .min(2, "Pangalan ay dapat may hindi bababa sa 2 character")
+    .max(100, "Pangalan ay masyadong mahaba")
+    .regex(/^[a-zA-ZÀ-ÿ\s.'-]+$/, "Pangalan ay dapat naglalaman lamang ng mga titik at espasyo"),
+  lebel: z
+    .string()
+    .min(2, "Kurso o lebel ay kinakailangan")
+    .max(100, "Kurso o lebel ay masyadong mahaba"),
+  mungkahi: z
+    .string()
+    .min(10, "Puna o mungkahi ay dapat may hindi bababa sa 10 character")
+    .max(2000, "Puna o mungkahi ay masyadong mahaba")
+    .refine((val) => val.trim().length >= 10, "Puna o mungkahi ay hindi dapat puro espasyo"),
+  recaptcha: z
+    .string()
+    .min(1, "Mangyaring kumpletuhin ang reCAPTCHA verification")
 });
 
 type FeedbackValues = z.infer<typeof feedbackSchema>;
@@ -39,46 +58,75 @@ const Feedback = () => {
       email: "",
       pangalan: "",
       lebel: "",
-      mungkahi: ""
+      mungkahi: "",
+      recaptcha: ""
     }
   });
 
-    const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const recaptchaRef = useRef<RecaptchaRef>(null);
+  
+  // Simplified reCAPTCHA handling
+  const [recaptchaToken, setRecaptchaToken] = useState<string>('');
 
-  const onSubmit = (data: FeedbackValues) => {
+  const onSubmit = async (data: FeedbackValues) => {
     setIsSubmitting(true);
     
-    const templateParams = {
-      from_name: data.pangalan,
-      from_email: data.email,
-      level: data.lebel,
-      message: data.mungkahi,
-      reply_to: data.email,
-      to_name: "Digiksyunaryo Admin"
-    };
+    try {
+      // Production-ready reCAPTCHA validation
+      if (!data.recaptcha || data.recaptcha.trim() === '' || data.recaptcha.length < 20) {
+        toast.error("reCAPTCHA verification required", {
+          description: "Mangyaring kumpletuhin ang reCAPTCHA verification."
+        });
+        return;
+      }
 
-    emailjs.send(
-      'service_j6d3eln',
-      'template_8jdc759', 
-      templateParams,
-      'YE_cdwWA94NYVKBSB'
-    )
-    .then((response) => {
+      // Additional client-side validation for production
+      if (!data.recaptcha.match(/^[A-Za-z0-9_-]+$/)) {
+        toast.error("Invalid reCAPTCHA token", {
+          description: "Pakisubukang muli ang reCAPTCHA verification."
+        });
+        return;
+      }
+
+
+
+      const templateParams = {
+        from_name: data.pangalan,
+        from_email: data.email,
+        level: data.lebel,
+        message: data.mungkahi,
+        reply_to: data.email,
+        to_name: "Digiksyunaryo Admin",
+        recaptcha_verified: "Yes"
+      };
+
+      const response = await emailjs.send(
+        'service_j6d3eln',
+        'template_8jdc759',
+        templateParams,
+        'YE_cdwWA94NYVKBSB'
+      );
+
       console.log('SUCCESS!', response.status, response.text);
-      toast.success("Maraming salamat sa iyong puna o mungkahi!", {
-        description: "Natanggap na namin ang iyong feedback at ito ay aming susuriin."
+      toast.success("Maraming salamat sa inyong puna o mungkahi!", {
+        description: "Natanggap na namin ang inyong feedback at ito ay aming susuriin."
       });
+
       form.reset();
-    })
-    .catch((err) => {
+      setRecaptchaToken('');
+      recaptchaRef.current?.reset();
+      
+    } catch (err) {
       console.error('FAILED...', err);
-      toast.error("May naganap na error sa pagpapadala ng iyong feedback", {
+      toast.error("May naganap na error sa pagpapadala ng inyong feedback", {
         description: "Pakisubukang muli mamaya o makipag-ugnay sa amin sa ibang paraan."
       });
-    })
-    .finally(() => {
+      setRecaptchaToken('');
+      recaptchaRef.current?.reset();
+    } finally {
       setIsSubmitting(false);
-    });
+    }
   };
 
   return (
@@ -94,76 +142,100 @@ const Feedback = () => {
         >
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <motion.h1
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.2, ease: "backOut" }}
-                className="text-4xl md:text-5xl font-serif font-bold mb-4 text-maroon"
-              >
-                <span className="inline-block">Feedback</span>
-                <MessageSquare className="inline-block ml-3 mb-2" size={32} />
-              </motion.h1>
-              
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
+              <motion.h1 
+                className="text-4xl md:text-5xl font-bold text-maroon mb-4"
+                initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
-                className="text-lg text-gray-700 max-w-2xl mx-auto"
+                transition={{ delay: 0.2, duration: 0.5 }}
               >
-                Mahalaga sa amin ang iyong mga puna at mungkahi upang patuloy naming mapagbuti ang 
-                Digiksyunaryo. Gamitin ang form sa ibaba para sa pagbibigay ng feedback.
+                Feedback at Mungkahi
+              </motion.h1>
+              <motion.p 
+                className="text-xl text-gray-600 max-w-2xl mx-auto"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.5 }}
+              >
+                Ang inyong opinyon ay mahalaga sa amin. Ibahagi ang inyong mga ideya, suhestiyon, o mga natuklasang isyu upang mapagbuti namin ang Digiksyunaryo.
               </motion.p>
             </div>
-            
-            {/* Tabs and TabsList removed */}
-            
-            {/* Online Form Card is now directly rendered */}
-            <Card className="border-maroon/20 shadow-lg mt-8"> {/* Added mt-8 for spacing */}
-              <CardHeader className="bg-gradient-to-r from-maroon/10 to-transparent pb-8">
-                <CardTitle className="text-2xl font-serif text-maroon flex items-center">
-                  <User className="mr-2" /> Magbigay ng Feedback
+
+            <Card className="border-maroon/20 shadow-lg mt-8">
+              <CardHeader className="bg-gradient-to-r from-maroon to-burgundy text-white rounded-t-lg">
+                <CardTitle className="text-2xl font-bold flex items-center">
+                  <MessageSquare className="mr-3 h-6 w-6" />
+                  Magbahagi ng Inyong Feedback
                 </CardTitle>
-                <CardDescription className="text-base mt-2">
-                  Ibahagi sa amin ang iyong mga ideya, suhestiyon, o mga natuklasang isyu.
+                <CardDescription className="text-gray-100">
+                  Kumpletuhin ang form sa ibaba upang maipaabot sa amin ang inyong mga puna o mungkahi.
                 </CardDescription>
               </CardHeader>
               
               <CardContent className="pt-6">
                 <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="feedback-form space-y-6">
+                    {/* Personal Information Section */}
+                    <div className="form-section">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <FormField
+                          control={form.control}
+                          name="email"
+                          render={({ field }) => (
+                            <FormItem className="space-y-2">
+                              <FormLabel className="text-base font-medium flex items-center">
+                                <Mail className="mr-2 h-4 w-4 text-maroon" /> Email
+                              </FormLabel>
+                              <FormControl>
+                                <Input 
+                                  placeholder="Ilagay ang inyong email address" 
+                                  className="border-maroon/20 focus-visible:ring-maroon"
+                                  {...field} 
+                                />
+                              </FormControl>
+                              <FormMessage className="text-red-600" />
+                            </FormItem>
+                          )}
+                        />
+                        
+                        <FormField
+                          control={form.control}
+                          name="pangalan"
+                          render={({ field }) => (
+                            <FormItem className="space-y-2">
+                              <FormLabel className="text-base font-medium flex items-center">
+                                <User className="mr-2 h-4 w-4 text-maroon" /> Pangalan
+                              </FormLabel>
+                              <FormControl>
+                                <Input 
+                                  placeholder="Ilagay ang inyong buong pangalan" 
+                                  className="border-maroon/20 focus-visible:ring-maroon"
+                                  {...field} 
+                                />
+                              </FormControl>
+                              <FormMessage className="text-red-600" />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Academic Level Section */}
+                    <div className="form-section">
                       <FormField
                         control={form.control}
-                        name="email"
+                        name="lebel"
                         render={({ field }) => (
                           <FormItem className="space-y-2">
                             <FormLabel className="text-base font-medium flex items-center">
-                              <Mail className="mr-2 h-4 w-4 text-maroon" /> Email
+                              <BookOpen className="mr-2 h-4 w-4 text-maroon" /> Kurso o Lebel ng Pag-aaral
                             </FormLabel>
+                            <FormDescription className="text-gray-500 text-sm">
+                              Halimbawa: Grade 7, Grade 12, College Freshman, Teacher, atbp.
+                            </FormDescription>
                             <FormControl>
                               <Input 
-                                placeholder="Ilagay dito ang iyong email" 
-                                className="border-maroon/20 focus-visible:ring-maroon" 
-                                {...field} 
-                              />
-                            </FormControl>
-                            <FormMessage className="text-red-600" />
-                          </FormItem>
-                        )}
-                      />
-                      
-                      <FormField
-                        control={form.control}
-                        name="pangalan"
-                        render={({ field }) => (
-                          <FormItem className="space-y-2">
-                            <FormLabel className="text-base font-medium flex items-center">
-                              <User className="mr-2 h-4 w-4 text-maroon" /> Pangalan
-                            </FormLabel>
-                            <FormControl>
-                              <Input 
-                                placeholder="Ilagay dito ang iyong pangalan" 
-                                className="border-maroon/20 focus-visible:ring-maroon" 
+                                placeholder="Ilagay ang inyong kurso o lebel ng pag-aaral" 
+                                className="border-maroon/20 focus-visible:ring-maroon"
                                 {...field} 
                               />
                             </FormControl>
@@ -172,57 +244,77 @@ const Feedback = () => {
                         )}
                       />
                     </div>
-                    
-                    <FormField
-                      control={form.control}
-                      name="lebel"
-                      render={({ field }) => (
-                        <FormItem className="space-y-2">
-                          <FormLabel className="text-base font-medium flex items-center">
-                            <BookOpen className="mr-2 h-4 w-4 text-maroon" /> Lebel/Kurso
-                          </FormLabel>
-                          <FormDescription className="text-gray-500 text-sm">
-                            Halimbawa: Mag-aaral ng Grade 10, Guro, Propesyonal, atbp.
-                          </FormDescription>
-                          <FormControl>
-                            <Input 
-                              placeholder="Ilagay dito ang iyong lebel o kurso" 
-                              className="border-maroon/20 focus-visible:ring-maroon" 
-                              {...field} 
-                            />
-                          </FormControl>
-                          <FormMessage className="text-red-600" />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <FormField
-                      control={form.control}
-                      name="mungkahi"
-                      render={({ field }) => (
-                        <FormItem className="space-y-2">
-                          <FormLabel className="text-base font-medium flex items-center">
-                            <MessageSquare className="mr-2 h-4 w-4 text-maroon" /> Puna o Mungkahi
-                          </FormLabel>
-                          <FormDescription className="text-gray-500 text-sm">
-                            Ibahagi ang iyong mga ideya, suhestiyon, o mga natuklasang isyu.
-                          </FormDescription>
-                          <FormControl>
-                            <Textarea 
-                              placeholder="Ilagay dito ang iyong puna o mungkahi..." 
-                              className="min-h-[180px] border-maroon/20 focus-visible:ring-maroon"
-                              {...field} 
-                            />
-                          </FormControl>
-                          <FormMessage className="text-red-600" />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <div className="pt-4">
-                      <Button 
-                        type="submit" 
-                        className="w-full bg-maroon hover:bg-burgundy text-white py-6 text-lg font-medium transition-all duration-300 ease-in-out transform hover:scale-[1.02] shadow-md hover:shadow-lg flex items-center justify-center gap-2"
+
+                    {/* Feedback Message Section */}
+                    <div className="form-section">
+                      <FormField
+                        control={form.control}
+                        name="mungkahi"
+                        render={({ field }) => (
+                          <FormItem className="space-y-2">
+                            <FormLabel className="text-base font-medium flex items-center">
+                              <MessageSquare className="mr-2 h-4 w-4 text-maroon" /> Puna o Mungkahi
+                            </FormLabel>
+                            <FormDescription className="text-gray-500 text-sm">
+                              Ibahagi ang inyong mga ideya, suhestiyon, o mga natuklasang isyu.
+                            </FormDescription>
+                            <FormControl>
+                              <Textarea 
+                                placeholder="Ilagay dito ang inyong puna o mungkahi..." 
+                                className="min-h-[180px] border-maroon/20 focus-visible:ring-maroon"
+                                {...field} 
+                              />
+                            </FormControl>
+                            <FormMessage className="text-red-600" />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+
+                    {/* reCAPTCHA Section - Simple Design */}
+                    <div className="form-section">
+                      <FormField
+                        control={form.control}
+                        name="recaptcha"
+                        render={({ field }) => (
+                          <FormItem className="space-y-3">
+                            <FormControl>
+                              <div className="flex justify-center">
+                                <Recaptcha
+                                  ref={recaptchaRef}
+                                  onChange={(token) => {
+                                    field.onChange(token || '');
+                                    setRecaptchaToken(token || '');
+                                  }}
+                                  onExpired={() => {
+                                    field.onChange('');
+                                    setRecaptchaToken('');
+                                  }}
+                                  onError={() => {
+                                    field.onChange('');
+                                    setRecaptchaToken('');
+                                  }}
+                                  theme="light"
+                                  size="normal"
+                                  required
+                                  showLabel={false}
+                                  className="w-full"
+                                />
+                              </div>
+                            </FormControl>
+                            <div className="flex justify-center mt-2">
+                              <FormMessage className="recaptcha-error-message text-red-600 text-xs text-center bg-red-50 border border-red-200 rounded px-3 py-2 max-w-xs" />
+                            </div>
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+
+                    {/* Submit Button Section */}
+                    <div className="form-section pt-4">
+                      <Button
+                        type="submit"
+                        className="w-full bg-maroon hover:bg-maroon/90 text-white py-4 text-lg font-medium transition-all duration-200 flex items-center justify-center gap-2"
                         disabled={isSubmitting}
                       >
                         {isSubmitting ? (
@@ -232,7 +324,7 @@ const Feedback = () => {
                           </>
                         ) : (
                           <>
-                            <Send className="mr-1" />
+                            <Send className="h-5 w-5" />
                             <span>Isumite ang Feedback</span>
                           </>
                         )}
@@ -243,13 +335,10 @@ const Feedback = () => {
               </CardContent>
               
               <CardFooter className="flex flex-col space-y-2 text-center text-sm text-gray-500 border-t border-gray-100 pt-6 pb-4">
-                <p>Ang iyong feedback ay mahalaga sa amin at ito ay gagamitin upang mapagbuti ang Digiksyunaryo.</p>
-                <p>Salamat sa iyong suporta!</p>
+                <p>Ang inyong feedback ay mahalaga sa amin at ito ay gagamitin upang mapagbuti ang Digiksyunaryo.</p>
+                <p>Salamat sa inyong suporta!</p>
               </CardFooter>
             </Card>
-            
-            {/* Google Form TabsContent and Card removed */}
-            
           </div>
         </motion.div>
       </main>

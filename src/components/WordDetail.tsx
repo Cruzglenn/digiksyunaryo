@@ -109,42 +109,46 @@ const WordDetail = ({ wordData, className }: WordDetailProps) => {
   
   const parseAIData = (data: string) => {
     if (!data) return null;
-    
+
     const sections = {
       paliwanag: "",
       halimbawa: [] as string[],
       kasingkahulugan: [] as string[],
       karagdagan: ""
     };
-    
-    const paliwanagMatch = data.match(/PALIWANAG:\s*([^]*?)(?=\n\s*MGA HALIMBAWA:|$)/i);
+
+    // Parse PALIWANAG section
+    const paliwanagMatch = data.match(/\*\*PALIWANAG:\*\*\s*([^]*?)(?=\n\s*\*\*MGA HALIMBAWA:\*\*|$)/i);
     if (paliwanagMatch && paliwanagMatch[1]) {
       sections.paliwanag = paliwanagMatch[1].trim();
     }
-    
-    const halimbawaMatch = data.match(/MGA HALIMBAWA:\s*([^]*?)(?=\n\s*MGA KASINGKAHULUGAN:|$)/i);
+
+    // Parse MGA HALIMBAWA section - looking for numbered lists (1., 2., 3.)
+    const halimbawaMatch = data.match(/\*\*MGA HALIMBAWA:\*\*\s*([^]*?)(?=\n\s*\*\*MGA KASINGKAHULUGAN:\*\*|$)/i);
     if (halimbawaMatch && halimbawaMatch[1]) {
       sections.halimbawa = halimbawaMatch[1]
         .split('\n')
         .map(line => line.trim())
-        .filter(line => line.startsWith('-'))
-        .map(line => line.substring(1).trim());
+        .filter(line => /^\d+\./.test(line)) // Look for lines starting with number and dot
+        .map(line => line.replace(/^\d+\.\s*/, '').trim()); // Remove the number and dot
     }
-    
-    const kasingkahuluganMatch = data.match(/MGA KASINGKAHULUGAN:\s*([^]*?)(?=\n\s*KARAGDAGANG IMPORMASYON:|$)/i);
+
+    // Parse MGA KASINGKAHULUGAN section - looking for numbered lists (1., 2., 3.)
+    const kasingkahuluganMatch = data.match(/\*\*MGA KASINGKAHULUGAN:\*\*\s*([^]*?)(?=\n\s*\*\*KARAGDAGANG IMPORMASYON:\*\*|$)/i);
     if (kasingkahuluganMatch && kasingkahuluganMatch[1]) {
       sections.kasingkahulugan = kasingkahuluganMatch[1]
         .split('\n')
         .map(line => line.trim())
-        .filter(line => line.startsWith('-'))
-        .map(line => line.substring(1).trim());
+        .filter(line => /^\d+\./.test(line)) // Look for lines starting with number and dot
+        .map(line => line.replace(/^\d+\.\s*/, '').trim()); // Remove the number and dot
     }
-    
-    const karagdaganMatch = data.match(/KARAGDAGANG IMPORMASYON:\s*([^]*?)$/i);
+
+    // Parse KARAGDAGANG IMPORMASYON section
+    const karagdaganMatch = data.match(/\*\*KARAGDAGANG IMPORMASYON:\*\*\s*([^]*?)$/i);
     if (karagdaganMatch && karagdaganMatch[1]) {
       sections.karagdagan = karagdaganMatch[1].trim();
     }
-    
+
     return sections;
   };
 
